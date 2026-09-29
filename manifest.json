@@ -3,18 +3,14 @@
   "short_name": "KEIBA QUIZ",
   "start_url": ".",
   "display": "standalone",
-  "background_color": "#0b110e",
-  "theme_color": "#0b110e",
+  "background_color": "#111813",
+  "theme_color": "#111813",
   "icons": [
     {
-      "src": "icon-180.png",
-      "sizes": "180x180",
-      "type": "image/png"
-    },
-    {
-      "src": "icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png"
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
     }
   ]
 }

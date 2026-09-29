@@ -1,76 +1,54 @@
-let questions=[], finals=[], qIndex=0, correctCount=0, selected=false, currentFinal=null;
+
 const $=s=>document.querySelector(s);
-const show=id=>{document.querySelectorAll('.screen').forEach(x=>x.classList.remove('active'));$('#'+id).classList.add('active');};
-async function loadData(){
-  const [q,f]=await Promise.all([fetch('questions.json').then(r=>r.json()),fetch('final_races.json').then(r=>r.json())]);
-  questions=q; finals=f;
+const app=$("#app");
+let qs=[], finals=[], idx=0, score=0, answered=false, revealed=0, finalIndex=0;
+
+async function load(){
+  const [q,f]=await Promise.all([fetch("questions.json").then(r=>r.json()),fetch("final_races.json").then(r=>r.json())]);
+  qs=shuffle(q).slice(0,5); finals=f; renderTitle();
 }
 function shuffle(a){return [...a].sort(()=>Math.random()-.5)}
-function typeLabel(t){return ({'G2/G3 winner':'GⅡ / GⅢ','bloodline':'BLOODLINE','record':'RECORD','profile':'PROFILE'})[t]||'QUIZ'}
+function renderTitle(){app.innerHTML=`<main class="screen title"><div class="mini">SINCE 2018 · RACING QUIZ</div><h1>KEIBA<span>QUIZ</span></h1><button class="start" onclick="start()">START</button></main>`}
+function start(){idx=0;score=0;renderQuestion()}
 function renderQuestion(){
-  selected=false;
-  $('#nextBtn').disabled=true;
-  const q=questions[qIndex%questions.length];
-  $('#qNo').textContent=String((qIndex%5)+1).padStart(2,'0');
-  $('#qType').textContent=typeLabel(q.type);
-  $('#qEyebrow').textContent=q.type==='G2/G3 winner'?'WINNER':q.type.toUpperCase();
-  $('#questionText').textContent=q.question;
-  document.querySelectorAll('.progress-dots i').forEach((dot,i)=>dot.classList.toggle('active',i===qIndex));
-  const choices=shuffle(q.choices);
-  $('#choices').innerHTML=choices.map((c,i)=>`<button class="choice" data-answer="${escapeHtml(c)}"><span class="num">${String(i+1).padStart(2,'0')}</span><span class="label">${escapeHtml(c)}</span><span class="mark" aria-hidden="true"></span></button>`).join('');
-  document.querySelectorAll('.choice').forEach(btn=>btn.addEventListener('click',()=>choose(btn,q.answer)));
-  updateHintStatus();
+ answered=false;
+ const q=qs[idx];
+ app.innerHTML=`<main class="screen">
+ <header class="header"><div class="eyebrow">QUESTION ${String(idx+1).padStart(2,"0")}</div><div class="count">${idx+1} / 05</div></header>
+ <div class="progress">${[0,1,2,3,4].map(i=>`<i class="dot ${i<idx?"on":""}"></i>`).join("")}</div>
+ <section class="question"><h1>${q.question}</h1><div class="choices">${q.choices.map((c,i)=>`<button class="choice" data-i="${i}" onclick="answer(${i})"><span class="num">${String(i+1).padStart(2,"0")}</span><span class="label">${c}</span><span class="mark"></span></button>`).join("")}</div></section>
+ <footer class="footer"><button id="next" class="next hidden" onclick="nextQ()">NEXT →</button></footer></main>`;
 }
-function choose(btn,answer){
-  if(selected)return;
-  selected=true;
-  const isCorrect=btn.dataset.answer===answer;
-  if(isCorrect) correctCount++;
-  document.querySelectorAll('.choice').forEach(x=>x.classList.add('locked'));
-  btn.classList.add(isCorrect?'correct':'wrong');
-  btn.querySelector('.mark').textContent=isCorrect?'○':'×';
-  // 不正解時は正解肢を表示しない。選択した肢の判定だけを示す。
-  $('#nextBtn').disabled=false;
-  updateHintStatus();
-  toast(isCorrect?'CORRECT':'INCORRECT',isCorrect);
+function answer(i){
+ if(answered)return; answered=true;
+ const q=qs[idx], buttons=[...document.querySelectorAll(".choice")], ok=q.choices[i]===q.answer;
+ buttons[i].classList.add(ok?"correct":"wrong"); buttons[i].querySelector(".mark").textContent=ok?"○":"×";
+ if(ok)score++;
+ const flash=document.createElement("div");flash.className="resultflash "+(ok?"ok":"ng");flash.textContent=ok?"○":"×";document.body.appendChild(flash);setTimeout(()=>flash.remove(),650);
+ $("#next").classList.remove("hidden");
 }
-function updateHintStatus(){
-  $('#hintCount').textContent=String(correctCount).padStart(2,'0')+' / 05';
-}
-function toast(t,ok){const el=$('#toast');el.textContent=t;el.className='show '+(ok?'ok':'ng');setTimeout(()=>el.className='',850)}
+function nextQ(){if(idx<4){idx++;renderQuestion()}else renderFinal()}
 function renderFinal(){
-  currentFinal=finals[Math.floor(Math.random()*finals.length)];
-  // ヒント順: 1 TIME / 2 4・5着 / 3 3着 / 4 2着 / 5 競馬場
-  const n=correctCount;
-  $('#courseName').textContent=n>=5?currentFinal.course:'????';
-  $('#firstHorse').textContent='？？？？';
-  $('#secondHorse').textContent=n>=4?currentFinal.second:'— — — —';
-  $('#thirdHorse').textContent=n>=3?currentFinal.third:'— — — —';
-  $('#fourthHorse').textContent=n>=2?currentFinal.fourth:'— — — —';
-  $('#fifthHorse').textContent=n>=2?currentFinal.fifth:'— — — —';
-  $('#raceTime').textContent=n>=1?currentFinal.time:'—:—.—';
-  ['h1','h2','h3','h4','h5'].forEach((id,i)=>$('#'+id).classList.toggle('open',n>=i+1));
-  $('#finalHint').textContent=`HINT ${String(n).padStart(2,'0')} / 05`;
-  $('#answerInput').value='';
-  show('final');
-  setTimeout(()=>$('#answerInput').focus(),150);
+ const f=finals[Math.floor(Math.random()*finals.length)]; finalIndex=f; revealed=0;
+ app.innerHTML=`<main class="screen"><header class="header"><div class="eyebrow">FINAL BOARD</div><div class="count">5 HINTS</div></header>
+ <section class="board"><div class="boardtop"><div class="venue" id="venue">？？？</div><div class="time">${f.time}</div></div>
+ <div class="rows">${f.finish.map((h,i)=>`<div class="row"><span class="place">${i+1}着</span><span class="horse ${i===0?"hiddenhorse":""}" id="horse${i}">${i===0?"？？？？？？":h}</span></div>`).join("")}</div>
+ <div class="reveal"><span id="hintLabel">HINT 01</span><button onclick="revealHint()">OPEN →</button></div>
+ <div class="finalanswer"><input id="answerInput" placeholder="1着馬名"><button onclick="submitFinal()">ANSWER</button></div>
+ </section></main>`;
 }
-function answerFinal(){
-  const val=$('#answerInput').value.trim();
-  if(!val)return;
-  const ok=normalize(val)===normalize(currentFinal.winner);
-  $('#resultSymbol').textContent=ok?'○':'×';
-  $('#resultTitle').textContent=ok?'的中':'残念';
-  $('#resultSub').textContent=ok?'BOARD READ COMPLETE':'BOARD READ FAILED';
-  $('#resultHorse').textContent=currentFinal.winner;
-  $('#result').dataset.ok=ok?'1':'0';
-  show('result');
+function revealHint(){
+ if(revealed>=5)return;
+ revealed++;
+ if(revealed===1)$("#hintLabel").textContent="HINT 01 · TIME";
+ else if(revealed===2)$("#hintLabel").textContent="HINT 02 · 4TH / 5TH";
+ else if(revealed===3)$("#hintLabel").textContent="HINT 03 · 3RD";
+ else if(revealed===4)$("#hintLabel").textContent="HINT 04 · 2ND";
+ else {$("#hintLabel").textContent="HINT 05 · VENUE";$("#venue").textContent=finalIndex.venue}
 }
-function normalize(s){return s.replace(/\s+/g,'').replace(/[（）()]/g,'').toLowerCase()}
-function escapeHtml(s){return s.replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
-$('#startBtn').addEventListener('click',()=>{qIndex=0;correctCount=0;renderQuestion();show('quiz')});
-$('#nextBtn').addEventListener('click',()=>{if(!selected)return;if(qIndex<4){qIndex++;renderQuestion()}else renderFinal()});
-$('#answerBtn').addEventListener('click',answerFinal);
-$('#answerInput').addEventListener('keydown',e=>{if(e.key==='Enter')answerFinal()});
-$('#restartBtn').addEventListener('click',()=>{qIndex=0;correctCount=0;renderQuestion();show('quiz')});
-loadData().catch(()=>{});
+function submitFinal(){
+ const val=$("#answerInput").value.trim();
+ const ok=val===finalIndex.finish[0];
+ app.innerHTML=`<main class="screen end"><div class="big">${ok?"○":"×"}</div><h2>${ok?"CONGRATULATIONS":"残念"}</h2><p>${ok?"BOARD READ COMPLETE":"THE ANSWER WAS "+finalIndex.finish[0]}</p><button class="start" onclick="start()">PLAY AGAIN</button></main>`;
+}
+load();
