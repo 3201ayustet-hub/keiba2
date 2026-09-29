@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#171b25">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="admin.css">
+<title>KEIBA QUIZ — ADMIN</title>
+</head>
+<body>
+<main class="admin-app">
+<section id="login-view" class="admin-screen active">
+  <div class="admin-brand">KEIBA QUIZ</div>
+  <div class="admin-kicker">ADMINISTRATOR</div>
+  <h1>管理者ページ</h1>
+  <p class="admin-note">パスワードを入力してください。</p>
+  <form id="login-form" class="login-form">
+    <input id="admin-password" type="password" inputmode="numeric" autocomplete="off"
+      maxlength="4" placeholder="PASSWORD" aria-label="管理者パスワード">
+    <button class="admin-primary" type="submit">ENTER</button>
+  </form>
+  <div id="login-error" class="login-error" hidden>パスワードが違います。</div>
+  <a href="index.html" class="back-link">← GAME</a>
+</section>
+
+<section id="admin-view" class="admin-screen">
+  <header class="admin-header">
+    <div>
+      <div class="admin-kicker">ADMINISTRATOR</div>
+      <h1>DATABASE</h1>
+    </div>
+    <button id="logout-btn" class="small-btn">LOGOUT</button>
+  </header>
+
+  <div id="db-summary" class="db-summary"></div>
+
+  <nav class="tabs">
+    <button class="tab active" data-tab="normal">通常問題</button>
+    <button class="tab" data-tab="final">FINAL問題</button>
+  </nav>
+
+  <div class="toolbar">
+    <input id="search-input" type="search" placeholder="検索：問題文・馬名・レース名など">
+    <select id="year-filter" hidden>
+      <option value="">全年度</option>
+    </select>
+  </div>
+
+  <div id="normal-list" class="data-list"></div>
+  <div id="final-list" class="data-list" hidden></div>
+</section>
+</main>
+<script src="admin.js"></script>
+</body>
+</html>

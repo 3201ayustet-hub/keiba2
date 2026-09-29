@@ -14,29 +14,77 @@
 <body>
 <main id="app">
 <section id="title-screen" class="screen active">
-  <div class="title-mark">KEIBA</div><h1>QUIZ</h1><div class="title-rule"></div>
+  <div class="title-mark">KEIBA</div>
+  <h1>QUIZ</h1>
+  <div class="title-rule"></div>
   <button id="start-btn" class="primary-btn">START</button>
+  <a class="admin-link" href="admin.html">管理者ページ</a>
 </section>
+
 <section id="quiz-screen" class="screen">
-  <header class="topbar"><div id="question-count">QUESTION 1 / 5</div><div class="panel-meter" aria-label="獲得パネル"><i></i><i></i><i></i><i></i><i></i></div></header>
-  <div class="quiz-card">
-    <div id="category" class="eyebrow"></div><h2 id="question-text"></h2><div id="choices" class="choices"></div>
-    <div id="answer-mark" class="answer-mark" hidden></div>
-    <div id="panel-get" class="panel-get" hidden>
-      <div class="panel-get-label">PANEL GET</div><div id="panel-get-card" class="panel-get-card"><span id="panel-get-name"></span></div>
+  <header class="topbar">
+    <div id="question-count">QUESTION 1 / 5</div>
+    <div id="score-label">0 / 5</div>
+  </header>
+
+  <div class="panel-stock" aria-label="獲得したFINALパネル">
+    <div class="stock-title">FINAL PANEL STOCK</div>
+    <div class="stock-grid">
+      <div class="stock-chip" data-panel="time"><span>TIME</span></div>
+      <div class="stock-chip" data-panel="fourth"><span>4TH</span></div>
+      <div class="stock-chip" data-panel="fifth"><span>5TH</span></div>
+      <div class="stock-chip" data-panel="third"><span>3RD</span></div>
+      <div class="stock-chip" data-panel="second"><span>2ND</span></div>
+      <div class="stock-chip" data-panel="venue"><span>VENUE</span></div>
     </div>
+  </div>
+
+  <div class="quiz-card">
+    <div id="category" class="eyebrow"></div>
+    <h2 id="question-text"></h2>
+    <div id="choices" class="choices"></div>
+
+    <div id="answer-mark" class="answer-mark" hidden></div>
+
+    <div id="panel-get" class="panel-get" hidden>
+      <div class="panel-get-label">PANEL GET</div>
+      <div id="panel-get-card" class="panel-get-card">
+        <span id="panel-get-name"></span>
+      </div>
+    </div>
+
     <button id="next-btn" class="next-btn" hidden>NEXT</button>
   </div>
 </section>
+
 <section id="final-intro-screen" class="screen">
-  <div class="final-intro"><div class="eyebrow">FINAL</div><h2>THE LAST CHALLENGE</h2><div id="earned-summary" class="earned-summary"></div><button id="final-start-btn" class="primary-btn">FINAL</button></div>
+  <div class="final-intro">
+    <div class="eyebrow">FINAL</div>
+    <h2>THE LAST CHALLENGE</h2>
+    <div id="earned-summary" class="earned-summary"></div>
+    <div id="earned-panel-preview" class="earned-panel-preview"></div>
+    <button id="final-start-btn" class="primary-btn">FINAL</button>
+  </div>
 </section>
+
 <section id="final-screen" class="screen">
-  <header class="final-header"><div class="eyebrow">FINAL</div><h2>NAME THE WINNER</h2></header>
+  <header class="final-header">
+    <div class="eyebrow">FINAL</div>
+    <h2>NAME THE WINNER</h2>
+  </header>
+
   <div class="final-board" id="final-board"></div>
-  <div class="final-answer-wrap"><input id="final-answer" type="text" inputmode="text" autocomplete="off" placeholder="1着馬の馬名" aria-label="1着馬の馬名"><button id="final-submit" class="primary-btn">ANSWER</button></div>
-  <div id="final-result" class="final-result" hidden></div><button id="restart-btn" class="next-btn" hidden>PLAY AGAIN</button>
+
+  <div class="final-answer-wrap">
+    <input id="final-answer" type="text" inputmode="text" autocomplete="off"
+      placeholder="1着馬の馬名" aria-label="1着馬の馬名">
+    <button id="final-submit" class="primary-btn">ANSWER</button>
+  </div>
+
+  <div id="final-result" class="final-result" hidden></div>
+  <button id="restart-btn" class="next-btn" hidden>PLAY AGAIN</button>
 </section>
 </main>
 <script src="app.js"></script>
-</body></html>
+</body>
+</html>

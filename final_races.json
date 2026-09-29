@@ -18,8 +18,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2018-takamatsu",
@@ -40,8 +39,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2018-osaka",
@@ -62,8 +60,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2018-ouka",
@@ -84,8 +81,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2018-satsuki",
@@ -106,8 +102,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2018-haruten",
@@ -128,8 +123,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2018-nhk",
@@ -150,8 +144,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2018-victoria",
@@ -172,8 +165,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2018-oaks",
@@ -194,8 +186,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2018-derby",
@@ -216,8 +207,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2018-yasuda",
@@ -238,8 +228,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2018-takara",
@@ -260,8 +249,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2018-sprint",
@@ -282,8 +270,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2018-shuka",
@@ -304,8 +291,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2018-kikka",
@@ -326,8 +312,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2018-akiten",
@@ -348,8 +333,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2018-eliza",
@@ -370,8 +354,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2018-mile",
@@ -392,8 +375,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2018-jc",
@@ -414,8 +396,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2018-champions",
@@ -436,8 +417,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2018-hjf",
@@ -458,8 +438,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2018-afs",
@@ -480,8 +459,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2018-arima",
@@ -502,8 +480,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2018-hopeful",
@@ -524,8 +501,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2019-01",
@@ -546,8 +522,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2019-02",
@@ -568,8 +543,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2019-03",
@@ -590,8 +564,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2019-04",
@@ -612,8 +585,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2019-05",
@@ -634,8 +606,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2019-06",
@@ -656,8 +627,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2019-07",
@@ -678,8 +648,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2019-08",
@@ -700,8 +669,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2019-09",
@@ -722,8 +690,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2019-10",
@@ -744,8 +711,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2019-11",
@@ -766,8 +732,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2019-12",
@@ -788,8 +753,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2019-13",
@@ -810,8 +774,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2019-14",
@@ -832,8 +795,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2019-15",
@@ -854,8 +816,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2019-16",
@@ -876,8 +837,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2019-17",
@@ -898,8 +858,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2019-18",
@@ -920,8 +879,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2019-19",
@@ -942,8 +900,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2019-20",
@@ -964,8 +921,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2019-21",
@@ -986,8 +942,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2019-22",
@@ -1008,8 +963,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2019-23",
@@ -1030,8 +984,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2019-24",
@@ -1052,8 +1005,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2020-01",
@@ -1074,8 +1026,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2020-02",
@@ -1096,8 +1047,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2020-03",
@@ -1118,8 +1068,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2020-04",
@@ -1140,8 +1089,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2020-05",
@@ -1162,8 +1110,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2020-06",
@@ -1184,8 +1131,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2020-07",
@@ -1206,8 +1152,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2020-08",
@@ -1228,8 +1173,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2020-09",
@@ -1250,8 +1194,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2020-10",
@@ -1272,8 +1215,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2020-11",
@@ -1294,8 +1236,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2020-12",
@@ -1316,8 +1257,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2020-13",
@@ -1338,8 +1278,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2020-14",
@@ -1360,8 +1299,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2020-15",
@@ -1382,8 +1320,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2020-16",
@@ -1404,8 +1341,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2020-17",
@@ -1426,8 +1362,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2020-18",
@@ -1448,8 +1383,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2020-19",
@@ -1470,8 +1404,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2020-20",
@@ -1492,8 +1425,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2020-21",
@@ -1514,8 +1446,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2020-22",
@@ -1536,8 +1467,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2020-23",
@@ -1558,8 +1488,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2020-24",
@@ -1583,8 +1512,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2021-01",
@@ -1605,8 +1533,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2021-02",
@@ -1627,8 +1554,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2021-03",
@@ -1649,8 +1575,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2021-04",
@@ -1671,8 +1596,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2021-05",
@@ -1693,8 +1617,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2021-06",
@@ -1715,8 +1638,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2021-07",
@@ -1737,8 +1659,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2021-08",
@@ -1759,8 +1680,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2021-09",
@@ -1781,8 +1701,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2021-10",
@@ -1803,8 +1722,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2021-11",
@@ -1825,8 +1743,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2021-12",
@@ -1847,8 +1764,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2021-13",
@@ -1869,8 +1785,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2021-14",
@@ -1891,8 +1806,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2021-15",
@@ -1913,8 +1827,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2021-16",
@@ -1935,8 +1848,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2021-17",
@@ -1957,8 +1869,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2021-18",
@@ -1979,8 +1890,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2021-19",
@@ -2001,8 +1911,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2021-20",
@@ -2023,8 +1932,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2021-21",
@@ -2045,8 +1953,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2021-22",
@@ -2067,8 +1974,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2021-23",
@@ -2089,8 +1995,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2021-24",
@@ -2111,8 +2016,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2022-01",
@@ -2133,8 +2037,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2022-02",
@@ -2155,8 +2058,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2022-03",
@@ -2177,8 +2079,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2022-04",
@@ -2199,8 +2100,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2022-05",
@@ -2221,8 +2121,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2022-06",
@@ -2243,8 +2142,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2022-07",
@@ -2265,8 +2163,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2022-08",
@@ -2287,8 +2184,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2022-09",
@@ -2309,8 +2205,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2022-10",
@@ -2331,8 +2226,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2022-11",
@@ -2353,8 +2247,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2022-12",
@@ -2375,8 +2268,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2022-13",
@@ -2397,8 +2289,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2022-14",
@@ -2419,8 +2310,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2022-15",
@@ -2441,8 +2331,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2022-16",
@@ -2463,8 +2352,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2022-17",
@@ -2485,8 +2373,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2022-18",
@@ -2507,8 +2394,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2022-19",
@@ -2529,8 +2415,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2022-20",
@@ -2551,8 +2436,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2022-21",
@@ -2573,8 +2457,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2022-22",
@@ -2595,8 +2478,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2022-23",
@@ -2617,8 +2499,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2022-24",
@@ -2639,8 +2520,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2023-01",
@@ -2661,8 +2541,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2023-02",
@@ -2683,8 +2562,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2023-03",
@@ -2705,8 +2583,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2023-04",
@@ -2727,8 +2604,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2023-05",
@@ -2749,8 +2625,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2023-06",
@@ -2771,8 +2646,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2023-07",
@@ -2793,8 +2667,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2023-08",
@@ -2815,8 +2688,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2023-09",
@@ -2837,8 +2709,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2023-10",
@@ -2859,8 +2730,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2023-11",
@@ -2881,8 +2751,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2023-12",
@@ -2903,8 +2772,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2023-13",
@@ -2925,8 +2793,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2023-14",
@@ -2947,8 +2814,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2023-15",
@@ -2969,8 +2835,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2023-16",
@@ -2991,8 +2856,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2023-17",
@@ -3013,8 +2877,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2023-18",
@@ -3035,8 +2898,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2023-19",
@@ -3057,8 +2919,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2023-20",
@@ -3079,8 +2940,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2023-21",
@@ -3101,8 +2961,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2023-22",
@@ -3123,8 +2982,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2023-23",
@@ -3145,8 +3003,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2023-24",
@@ -3167,8 +3024,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2024-01",
@@ -3189,8 +3045,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2024-02",
@@ -3211,8 +3066,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2024-03",
@@ -3233,8 +3087,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2024-04",
@@ -3255,8 +3108,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2024-05",
@@ -3277,8 +3129,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2024-06",
@@ -3299,8 +3150,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2024-07",
@@ -3321,8 +3171,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2024-08",
@@ -3343,8 +3192,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2024-09",
@@ -3365,8 +3213,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2024-10",
@@ -3387,8 +3234,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2024-11",
@@ -3409,8 +3255,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2024-12",
@@ -3431,8 +3276,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2024-13",
@@ -3453,8 +3297,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2024-14",
@@ -3475,8 +3318,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2024-15",
@@ -3497,8 +3339,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2024-16",
@@ -3519,8 +3360,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2024-17",
@@ -3541,8 +3381,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2024-18",
@@ -3563,8 +3402,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2024-19",
@@ -3589,8 +3427,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2024-20",
@@ -3611,8 +3448,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2024-21",
@@ -3633,8 +3469,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2024-22",
@@ -3655,8 +3490,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2024-23",
@@ -3677,8 +3511,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2024-24",
@@ -3699,8 +3532,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2025-01",
@@ -3721,8 +3553,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2025-02",
@@ -3743,8 +3574,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2025-03",
@@ -3765,8 +3595,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2025-04",
@@ -3787,8 +3616,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2025-05",
@@ -3809,8 +3637,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2025-06",
@@ -3831,8 +3658,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2025-07",
@@ -3853,8 +3679,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2025-08",
@@ -3875,8 +3700,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2025-09",
@@ -3897,8 +3721,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2025-10",
@@ -3919,8 +3742,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2025-11",
@@ -3941,8 +3763,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2025-12",
@@ -3963,8 +3784,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2025-13",
@@ -3985,8 +3805,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2025-14",
@@ -4007,8 +3826,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2025-15",
@@ -4029,8 +3847,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2025-16",
@@ -4051,8 +3868,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2025-17",
@@ -4073,8 +3889,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2025-18",
@@ -4095,8 +3910,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2025-19",
@@ -4117,8 +3931,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2025-20",
@@ -4139,8 +3952,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2025-21",
@@ -4161,8 +3973,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2025-22",
@@ -4183,8 +3994,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2025-23",
@@ -4205,8 +4015,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2025-24",
@@ -4227,8 +4036,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2026-01",
@@ -4249,8 +4057,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2026-02",
@@ -4271,8 +4078,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2026-03",
@@ -4293,8 +4099,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2026-04",
@@ -4315,8 +4120,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2026-05",
@@ -4337,8 +4141,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2026-06",
@@ -4359,8 +4162,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2026-07",
@@ -4381,8 +4183,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2026-08",
@@ -4403,8 +4204,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2026-09",
@@ -4425,8 +4225,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2026-10",
@@ -4447,8 +4246,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2026-11",
@@ -4473,8 +4271,7 @@
       "time": "pending_individual_jra_check"
     },
     "dead_heat": true,
-    "dead_heat_note": "2着同着",
-    "playable": true
+    "dead_heat_note": "2着同着"
   },
   {
     "id": "2026-12",
@@ -4495,8 +4292,7 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   },
   {
     "id": "2026-13",
@@ -4517,7 +4313,6 @@
       "top5": "pending_individual_jra_check",
       "time": "pending_individual_jra_check"
     },
-    "dead_heat": false,
-    "playable": true
+    "dead_heat": false
   }
 ]
