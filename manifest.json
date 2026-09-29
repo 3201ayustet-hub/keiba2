@@ -1,10 +1,10 @@
 {
-  "name": "競馬クイズ — BOARD EDITION",
+  "name": "競馬クイズ",
   "short_name": "競馬クイズ",
   "start_url": ".",
   "display": "standalone",
-  "background_color": "#20201d",
-  "theme_color": "#202a2e",
+  "background_color": "#171715",
+  "theme_color": "#171b1d",
   "lang": "ja",
   "icons": [
     {
