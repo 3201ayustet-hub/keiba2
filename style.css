@@ -26,3 +26,5 @@ button{font:inherit}
 .finalanswer{display:flex;gap:8px}.finalanswer input{flex:1;min-width:0;background:transparent;border:0;border-bottom:1px solid var(--line);color:var(--paper);font-size:18px;padding:10px}.finalanswer button{background:var(--gold);color:var(--ink);border:0;padding:0 18px;font:500 12px "DM Mono",monospace}
 .end{justify-content:center;text-align:center;align-items:center}.end .big{font:700 72px "DM Mono",monospace;color:var(--gold)}.end h2{font-size:28px;margin:12px 0}.end p{color:var(--muted);font:500 11px "DM Mono",monospace;letter-spacing:.1em}
 @media(max-height:680px){.question h1{margin-bottom:14px}.choice{min-height:48px}.footer{min-height:48px}.label{font-size:15px}}
+
+.reveal button:disabled{cursor:default}
