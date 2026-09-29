@@ -1,103 +1,25 @@
-const $=s=>document.querySelector(s);
-const app=$("#app");
-let allQuestions=[], finalRaces=[], currentQuestions=[], qIndex=0, score=0, answered=false, finalRace=null;
-
-async function load(){
-  [allQuestions,finalRaces]=await Promise.all([
-    fetch("questions.json").then(r=>r.json()),
-    fetch("final_races.json").then(r=>r.json())
-  ]);
-  renderTitle();
-}
-function shuffle(a){
-  const x=[...a];
-  for(let i=x.length-1;i>0;i--){
-    const j=Math.floor(Math.random()*(i+1));
-    [x[i],x[j]]=[x[j],x[i]];
-  }
-  return x;
-}
-function escapeHtml(s){
-  return String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));
-}
-function start(){
-  currentQuestions=shuffle(allQuestions).slice(0,5);
-  qIndex=0; score=0; renderQuestion();
-}
-function renderTitle(){
-  app.innerHTML=`<main class="screen title"><div class="mini">SINCE 2018 · RACING QUIZ</div><h1>KEIBA<span>QUIZ</span></h1><button class="start" onclick="start()">START</button></main>`;
-}
-function renderQuestion(){
-  answered=false;
-  const q=currentQuestions[qIndex];
-  const choices=shuffle(q.choices);
-  app.innerHTML=`<main class="screen">
-    <header class="header"><div class="eyebrow">QUESTION ${String(qIndex+1).padStart(2,"0")}</div><div class="count">${qIndex+1} / 05</div></header>
-    <div class="progress">${[0,1,2,3,4].map(i=>`<i class="dot ${i<qIndex?"on":""}"></i>`).join("")}</div>
-    <section class="question"><h1>${escapeHtml(q.question)}</h1>
-      <div class="choices">${choices.map((c,i)=>`<button class="choice" data-answer="${escapeHtml(c)}" onclick="answer(this)">
-        <span class="num">${String(i+1).padStart(2,"0")}</span><span class="label">${escapeHtml(c)}</span><span class="mark"></span>
-      </button>`).join("")}</div>
-    </section>
-    <footer class="footer"><button id="next" class="next hidden" onclick="nextQ()">NEXT →</button></footer>
-  </main>`;
-}
-function answer(button){
-  if(answered)return;
-  answered=true;
-  const q=currentQuestions[qIndex];
-  const ok=button.dataset.answer===q.answer;
-  if(ok)score++;
-  button.classList.add(ok?"correct":"wrong");
-  button.querySelector(".mark").textContent=ok?"○":"×";
-  const flash=document.createElement("div");
-  flash.className="resultflash "+(ok?"ok":"ng");
-  flash.textContent=ok?"○":"×";
-  document.body.appendChild(flash);
-  setTimeout(()=>flash.remove(),650);
-  $("#next").classList.remove("hidden");
-}
-function nextQ(){
-  if(qIndex<4){qIndex++;renderQuestion();}
-  else renderFinal();
-}
-function renderFinal(){
-  finalRace=finalRaces[Math.floor(Math.random()*finalRaces.length)];
-  // score = number of panels already open. No manual hint action exists.
-  const open=score;
-  app.innerHTML=`<main class="screen">
-    <header class="header"><div class="eyebrow">FINAL</div><div class="count">${open} / 05 OPEN</div></header>
-    <section class="board">
-      <div class="boardtop">
-        <div class="venue">${open>=5?escapeHtml(finalRace.venue):"？？？"}</div>
-        <div class="time">${open>=1?escapeHtml(finalRace.time):"？？？"}</div>
-      </div>
-      <div class="rows">
-        ${finalRace.finish.map((h,i)=>{
-          const visible=(i===0)?false:
-            (i===1?open>=4:
-             (i===2?open>=3:
-              (i===3?open>=2:
-               open>=2)));
-          // 4着/5着 open together at panel 2; 3着 panel 3; 2着 panel 4; venue panel 5.
-          return `<div class="row">
-            <span class="place">${i+1}着</span>
-            <span class="horse ${visible?"":"hiddenhorse"}">${visible?escapeHtml(h):"？？？？？？"}</span>
-          </div>`;
-        }).join("")}
-      </div>
-      <div class="finalanswer"><input id="answerInput" placeholder="1着馬名" autocomplete="off"><button onclick="submitFinal()">ANSWER</button></div>
-    </section>
-  </main>`;
-}
-function submitFinal(){
-  const val=$("#answerInput").value.trim();
-  const ok=val===finalRace.finish[0];
-  app.innerHTML=`<main class="screen end">
-    <div class="big">${ok?"○":"×"}</div>
-    <h2>${ok?"CONGRATULATIONS":"残念"}</h2>
-    <p>${ok?"BOARD READ COMPLETE":"THE ANSWER WAS "+escapeHtml(finalRace.finish[0])}</p>
-    <button class="start" onclick="start()">PLAY AGAIN</button>
-  </main>`;
-}
-load();
+(()=>{
+const $=s=>document.querySelector(s);const screens=['title-screen','quiz-screen','final-intro-screen','final-screen'];
+let questions=[],finals=[],quiz=[],qIndex=0,score=0,answered=false,currentFinal=null;
+const show=id=>screens.forEach(s=>$('#'+s).classList.toggle('active',s===id));
+const shuffle=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const norm=s=>String(s??'').trim().normalize('NFKC').replace(/[\s　]+/g,'');
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function validateQuestion(q){return q&&typeof q.question==='string'&&Array.isArray(q.choices)&&q.choices.length>=4&&new Set(q.choices).size===q.choices.length&&q.choices.includes(q.answer)}
+function validateFinal(r){return r&&r.playable!==false&&r.venue&&r.winner&&r.second&&r.fourth&&r.fifth&&r.time}
+function valueText(v){return Array.isArray(v)?v.join(' ／ '):String(v??'—')}
+function prepareQuiz(){const pool=questions.filter(validateQuestion);quiz=shuffle(pool).slice(0,5).map(q=>({...q,choices:shuffle(q.choices)}));qIndex=0;score=0;answered=false;updateMeter();renderQuestion()}
+function updateMeter(){$$('.panel-meter i').forEach((el,i)=>el.classList.toggle('on',i<score))}
+function $$(s){return document.querySelectorAll(s)}
+function renderQuestion(){const q=quiz[qIndex];answered=false;$('#question-count').textContent=`QUESTION ${qIndex+1} / 5`;$('[id=category]').textContent=q.category||'RACE QUIZ';$('#question-text').textContent=q.question;$('#choices').innerHTML='';$('#answer-mark').hidden=true;$('#panel-get').hidden=true;$('#next-btn').hidden=true;
+q.choices.forEach(choice=>{const b=document.createElement('button');b.className='choice';b.textContent=choice;b.addEventListener('click',()=>answerQuestion(choice,b));$('#choices').appendChild(b)})}
+function answerQuestion(choice,btn){if(answered)return;answered=true;const q=quiz[qIndex],correct=norm(choice)===norm(q.answer);if(correct)score++;updateMeter();$$('.choice').forEach(b=>b.classList.add('disabled'));btn.classList.add(correct?'correct':'wrong');const mark=$('#answer-mark');mark.hidden=false;mark.textContent=correct?'○':'×';mark.className='answer-mark '+(correct?'ok':'ng');if(correct){$('#panel-get').hidden=false;const names=['TIME','4TH / 5TH','3RD','2ND','VENUE'];$('#panel-get-name').textContent=names[score-1]+' PANEL';}$('#next-btn').hidden=false}
+function nextQuestion(){if(!answered)return;if(qIndex<4){qIndex++;renderQuestion()}else{$('#earned-summary').textContent=`${score} / 5 PANELS EARNED`;show('final-intro-screen')}}
+function renderFinal(){const valid=finals.filter(validateFinal);if(!valid.length)throw new Error('FINAL問題DBに有効なレースがありません。');currentFinal=valid[Math.floor(Math.random()*valid.length)];const openCount=score;
+// Opening order is fixed: TIME -> 4/5 -> 3 -> 2 -> VENUE. Display remains a finish-board style listing.
+const rows=[['VENUE',currentFinal.venue,5],['2ND',currentFinal.second,4],['3RD',currentFinal.third,3],['4TH / 5TH',`${valueText(currentFinal.fourth)} ／ ${valueText(currentFinal.fifth)}`,2],['TIME',currentFinal.time,1]];
+$('#final-board').innerHTML=rows.map(([label,value,need])=>`<div class="board-row ${openCount>=need?'':'closed'}"><div class="board-label">${label}</div><div class="board-value">${esc(value)}</div></div>`).join('');$('#final-answer').value='';$('#final-answer').disabled=false;$('#final-submit').disabled=false;$('#final-result').hidden=true;$('#restart-btn').hidden=true}
+function submitFinal(){const a=norm($('#final-answer').value);if(!a||!currentFinal)return;const ok=a===norm(currentFinal.winner);$('#final-answer').disabled=true;$('#final-submit').disabled=true;const r=$('#final-result');r.hidden=false;r.className='final-result '+(ok?'ok':'ng');r.textContent=ok?'○  CONGRATULATIONS':'×  TRY AGAIN';$('#restart-btn').hidden=false}
+async function loadData(){const [qr,fr]=await Promise.all([fetch('questions.json',{cache:'no-store'}),fetch('final_races.json',{cache:'no-store'})]);if(!qr.ok||!fr.ok)throw new Error('問題DBを読み込めませんでした。');questions=await qr.json();finals=await fr.json();questions=Array.isArray(questions)?questions:(questions.questions||[]);finals=Array.isArray(finals)?finals:(finals.races||finals.finalRaces||[]);questions=questions.filter(validateQuestion);finals=finals.filter(validateFinal);if(questions.length<5)throw new Error('通常問題が5問未満です。');if(!finals.length)throw new Error('FINAL問題がありません。');console.info(`Loaded ${questions.length} normal questions / ${finals.length} final races`) }
+$('#start-btn').addEventListener('click',()=>{try{prepareQuiz();show('quiz-screen')}catch(e){alert(e.message)}});$('#next-btn').addEventListener('click',nextQuestion);$('#final-start-btn').addEventListener('click',()=>{try{renderFinal();show('final-screen')}catch(e){alert(e.message)}});$('#final-submit').addEventListener('click',submitFinal);$('#final-answer').addEventListener('keydown',e=>{if(e.key==='Enter')submitFinal()});$('#restart-btn').addEventListener('click',()=>show('title-screen'));loadData().catch(e=>{console.error(e);alert('データ読み込みエラー：'+e.message)});
+})();

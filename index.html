@@ -2,16 +2,41 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#111813">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#171b25">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="manifest" href="manifest.json">
-<link rel="icon" href="icon.svg">
-<link rel="apple-touch-icon" href="icon.svg">
-<title>KEIBA QUIZ</title>
+<link rel="icon" href="icon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="style.css">
+<title>KEIBA QUIZ</title>
 </head>
 <body>
-<div id="app"></div>
+<main id="app">
+<section id="title-screen" class="screen active">
+  <div class="title-mark">KEIBA</div><h1>QUIZ</h1><div class="title-rule"></div>
+  <button id="start-btn" class="primary-btn">START</button>
+</section>
+<section id="quiz-screen" class="screen">
+  <header class="topbar"><div id="question-count">QUESTION 1 / 5</div><div class="panel-meter" aria-label="獲得パネル"><i></i><i></i><i></i><i></i><i></i></div></header>
+  <div class="quiz-card">
+    <div id="category" class="eyebrow"></div><h2 id="question-text"></h2><div id="choices" class="choices"></div>
+    <div id="answer-mark" class="answer-mark" hidden></div>
+    <div id="panel-get" class="panel-get" hidden>
+      <div class="panel-get-label">PANEL GET</div><div id="panel-get-card" class="panel-get-card"><span id="panel-get-name"></span></div>
+    </div>
+    <button id="next-btn" class="next-btn" hidden>NEXT</button>
+  </div>
+</section>
+<section id="final-intro-screen" class="screen">
+  <div class="final-intro"><div class="eyebrow">FINAL</div><h2>THE LAST CHALLENGE</h2><div id="earned-summary" class="earned-summary"></div><button id="final-start-btn" class="primary-btn">FINAL</button></div>
+</section>
+<section id="final-screen" class="screen">
+  <header class="final-header"><div class="eyebrow">FINAL</div><h2>NAME THE WINNER</h2></header>
+  <div class="final-board" id="final-board"></div>
+  <div class="final-answer-wrap"><input id="final-answer" type="text" inputmode="text" autocomplete="off" placeholder="1着馬の馬名" aria-label="1着馬の馬名"><button id="final-submit" class="primary-btn">ANSWER</button></div>
+  <div id="final-result" class="final-result" hidden></div><button id="restart-btn" class="next-btn" hidden>PLAY AGAIN</button>
+</section>
+</main>
 <script src="app.js"></script>
-</body>
-</html>
+</body></html>
