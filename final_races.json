@@ -1,101 +1,74 @@
-{
-  "version": 5,
-  "races": [
-    {
-      "id": "f001",
-      "year": 2018,
-      "race": "ジャパンカップ",
-      "venue": "東京",
-      "race_no": "11R",
-      "time": "2:20.6",
-      "top": [
-        "アーモンドアイ",
-        "キセキ",
-        "スワーヴリチャード",
-        "シュヴァルグラン",
-        "ミッキースワロー"
-      ],
-      "source": "https://www.jra.go.jp/datafile/seiseki/g1/jc/result/jc2018.html"
-    },
-    {
-      "id": "f002",
-      "year": 2020,
-      "race": "ジャパンカップ",
-      "venue": "東京",
-      "race_no": "11R",
-      "time": "2:23.0",
-      "top": [
-        "アーモンドアイ",
-        "コントレイル",
-        "デアリングタクト",
-        "カレンブーケドール",
-        "グローリーヴェイズ"
-      ],
-      "source": "https://www.jra.go.jp/datafile/seiseki/g1/jc/result/jc2020.html"
-    },
-    {
-      "id": "f003",
-      "year": 2021,
-      "race": "天皇賞（秋）",
-      "venue": "東京",
-      "race_no": "11R",
-      "time": "1:57.9",
-      "top": [
-        "エフフォーリア",
-        "コントレイル",
-        "グランアレグリア",
-        "サンレイポケット",
-        "ヒシイグアス"
-      ],
-      "source": "https://www.jra.go.jp/datafile/seiseki/g1/akiten/result/akiten2021.html"
-    },
-    {
-      "id": "f004",
-      "year": 2022,
-      "race": "有馬記念",
-      "venue": "中山",
-      "race_no": "11R",
-      "time": "2:32.4",
-      "top": [
-        "イクイノックス",
-        "ボルドグフーシュ",
-        "ジェラルディーナ",
-        "イズジョーノキセキ",
-        "エフフォーリア"
-      ],
-      "source": "https://www.jra.go.jp/datafile/seiseki/g1/arima/result/arima2022.html"
-    },
-    {
-      "id": "f005",
-      "year": 2023,
-      "race": "ジャパンカップ",
-      "venue": "東京",
-      "race_no": "12R",
-      "time": "2:21.8",
-      "top": [
-        "イクイノックス",
-        "リバティアイランド",
-        "スターズオンアース",
-        "ドウデュース",
-        "タイトルホルダー"
-      ],
-      "source": "https://www.jra.go.jp/datafile/seiseki/g1/jc/result/jc2023.html"
-    },
-    {
-      "id": "f006",
-      "year": 2023,
-      "race": "有馬記念",
-      "venue": "中山",
-      "race_no": "11R",
-      "time": "2:30.9",
-      "top": [
-        "ドウデュース",
-        "スターズオンアース",
-        "タイトルホルダー",
-        "ジャスティンパレス",
-        "シャフリヤール"
-      ],
-      "source": "https://www.jra.go.jp/datafile/seiseki/g1/arima/result/arima2023.html"
-    }
-  ]
-}
+[
+  {
+    "id": 1,
+    "year": 2018,
+    "race": "ジャパンカップ",
+    "course": "東京",
+    "time": "2:20.6",
+    "winner": "アーモンドアイ",
+    "second": "キセキ",
+    "third": "スワーヴリチャード",
+    "fourth": "シュヴァルグラン",
+    "fifth": "ミッキースワロー"
+  },
+  {
+    "id": 2,
+    "year": 2019,
+    "race": "ジャパンカップ",
+    "course": "東京",
+    "time": "2:25.9",
+    "winner": "スワーヴリチャード",
+    "second": "カレンブーケドール",
+    "third": "ワグネリアン",
+    "fourth": "マカヒキ",
+    "fifth": "ユーキャンスマイル"
+  },
+  {
+    "id": 3,
+    "year": 2020,
+    "race": "ジャパンカップ",
+    "course": "東京",
+    "time": "2:23.0",
+    "winner": "アーモンドアイ",
+    "second": "コントレイル",
+    "third": "デアリングタクト",
+    "fourth": "カレンブーケドール",
+    "fifth": "グローリーヴェイズ"
+  },
+  {
+    "id": 4,
+    "year": 2021,
+    "race": "天皇賞（秋）",
+    "course": "東京",
+    "time": "1:57.9",
+    "winner": "エフフォーリア",
+    "second": "コントレイル",
+    "third": "グランアレグリア",
+    "fourth": "サンレイポケット",
+    "fifth": "ヒシイグアス"
+  },
+  {
+    "id": 5,
+    "year": 2022,
+    "race": "有馬記念",
+    "course": "中山",
+    "time": "2:32.4",
+    "winner": "イクイノックス",
+    "second": "ボルドグフーシュ",
+    "third": "ジェラルディーナ",
+    "fourth": "イズジョーノキセキ",
+    "fifth": "エフフォーリア"
+  },
+  {
+    "id": 6,
+    "year": 2023,
+    "race": "ジャパンカップ",
+    "course": "東京",
+    "time": "2:21.8",
+    "winner": "イクイノックス",
+    "second": "リバティアイランド",
+    "third": "スターズオンアース",
+    "fourth": "ドウデュース",
+    "fifth": "タイトルホルダー"
+  }
+]

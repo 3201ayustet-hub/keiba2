@@ -1,143 +1,67 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Serif+JP:wght@500;600;700;900&display=swap');
-
-:root{
-  --paper:#eee7d4;
-  --paper-deep:#e3dbc4;
-  --ink:#172833;
-  --ink-soft:#41515a;
-  --red:#9b2827;
-  --gold:#b29358;
-  --muted:#777267;
-  --dark:#121e24;
-  --line:rgba(23,40,51,.38);
-}
 *{box-sizing:border-box}
-html,body{margin:0;min-height:100%;background:#171715;color:var(--ink)}
-body{font-family:"Noto Serif JP","Yu Mincho",serif;overflow-x:hidden}
+:root{--bg:#0b110e;--bg2:#101b15;--ink:#e9e2d2;--muted:#8b8a80;--gold:#b89a52;--wine:#8c4b54;--line:rgba(233,226,210,.16)}
+html,body{margin:0;width:100%;height:100%;background:var(--bg);color:var(--ink);font-family:"Noto Serif JP",serif}
+body{overflow:hidden}
 button,input{font:inherit}
-button{cursor:pointer;-webkit-tap-highlight-color:transparent}
-
-body:before{
-  content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opacity:.12;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.08'/%3E%3C/svg%3E");
-}
-
-.masthead{
-  height:58px;position:sticky;top:0;z-index:30;
-  display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
-  padding:0 18px;background:var(--paper);border-bottom:2px solid var(--red);
-}
-.masthead-side{
-  font-family:"Bebas Neue","Arial Narrow",sans-serif;font-size:10px;line-height:1.05;letter-spacing:.18em;color:var(--ink)
-}
-.masthead-side span{color:var(--red)}
-.masthead-side.right{text-align:right}
-.brand{text-align:center;line-height:.74;transform:translateY(1px)}
-.brand span,.brand b{display:block;font-family:"Noto Serif JP","Yu Mincho",serif;font-weight:900;letter-spacing:-.12em}
-.brand span{font-size:20px;color:var(--red)}
-.brand b{font-size:20px;color:var(--ink);margin-top:3px}
-
-#app{width:min(100%,980px);margin:auto;background:var(--paper);min-height:calc(100dvh - 58px);box-shadow:0 0 80px rgba(0,0,0,.42)}
-.screen{height:calc(100dvh - 58px);min-height:560px;padding:clamp(24px,5vw,54px) clamp(20px,6vw,64px);position:relative;overflow:hidden;display:flex;flex-direction:column}
-.screen.center{justify-content:center}
-
-.eyebrow{font-family:"Bebas Neue","Arial Narrow",sans-serif;font-size:13px;letter-spacing:.18em;color:var(--red);line-height:1}
-.display{font-family:"Bebas Neue","Arial Narrow",sans-serif;letter-spacing:.035em}
-.hairline{height:1px;background:var(--line);margin:16px 0}
-.redline{height:3px;background:var(--red);width:100%;margin:18px 0 0}
-
-/* TITLE */
-.title-screen{justify-content:space-between;padding-top:34px;padding-bottom:28px}
-.title-lockup{margin:auto 0;display:flex;flex-direction:column;align-items:flex-start}
-.title-kicker{font-family:"Bebas Neue","Arial Narrow",sans-serif;font-size:16px;letter-spacing:.3em;color:var(--ink-soft);margin-bottom:18px}
-.main-logo{position:relative;margin:0;font-family:"Noto Serif JP","Yu Mincho",serif;font-weight:900;line-height:.83;letter-spacing:-.13em;color:var(--ink);font-size:clamp(72px,18vw,170px)}
-.main-logo .red{color:var(--red);display:block;margin-left:.12em}
-.main-logo:after{content:"KEIBA QUIZ / BOARD EDITION";display:block;font-family:"Bebas Neue","Arial Narrow",sans-serif;font-size:clamp(14px,2.5vw,22px);font-weight:400;letter-spacing:.3em;color:var(--ink);margin:24px 0 0 .1em}
-.title-mark{width:min(520px,80%);height:3px;background:var(--red);margin:26px 0 0 0;position:relative}
-.title-mark:before{content:"";position:absolute;left:0;top:-7px;width:72px;height:1px;background:var(--ink)}
-.start-row{display:flex;justify-content:space-between;align-items:end;border-top:1px solid var(--line);padding-top:14px}
-.start-meta{font-family:"Bebas Neue","Arial Narrow",sans-serif;font-size:12px;letter-spacing:.16em;color:var(--muted);line-height:1.5}
-.start-button{appearance:none;border:0;background:transparent;color:var(--ink);padding:6px 0;font-family:"Bebas Neue","Arial Narrow",sans-serif;font-size:29px;letter-spacing:.1em;position:relative}
-.start-button:after{content:"";display:block;height:3px;background:var(--red);margin-top:5px;transition:width .15s;width:42px}
-.start-button:hover:after,.start-button:focus-visible:after{width:100%}
-
-/* QUIZ */
-.quiz-screen{padding-top:26px;padding-bottom:20px}
-.quiz-head{display:flex;justify-content:space-between;align-items:end;gap:20px}
-.quiz-title{font-family:"Noto Serif JP","Yu Mincho",serif;font-size:clamp(31px,7vw,58px);font-weight:900;letter-spacing:-.08em;line-height:.95;margin:8px 0 0}
-.quiz-count{font-family:"Bebas Neue","Arial Narrow",sans-serif;font-size:20px;letter-spacing:.08em;white-space:nowrap}
-.quiz-count b{font-size:38px;color:var(--red);font-weight:400}
-.quiz-rule{height:3px;background:var(--red);margin:15px 0 17px}
-.question-area{flex:1;min-height:0;display:flex;flex-direction:column}
-.question-meta{display:flex;align-items:center;justify-content:space-between;gap:12px;font-family:"Bebas Neue","Arial Narrow",sans-serif;letter-spacing:.1em;font-size:14px;color:var(--red)}
-.question-prompt{font-size:clamp(22px,4.5vw,36px);font-weight:700;line-height:1.5;letter-spacing:-.04em;margin:14px 0 15px;max-width:850px}
-.choices{display:grid;gap:0;border-top:1px solid var(--line)}
-.choice{appearance:none;border:0;border-bottom:1px solid var(--line);background:transparent;color:var(--ink);min-height:58px;padding:10px 2px;display:grid;grid-template-columns:34px 1fr;align-items:center;text-align:left;transition:background .12s}
-.choice:hover,.choice:focus-visible{background:rgba(155,40,39,.06)}
-.choice .letter{font-family:"Bebas Neue","Arial Narrow",sans-serif;font-size:19px;color:var(--red);letter-spacing:.08em}
-.choice .choice-text{font-size:clamp(17px,3.7vw,22px);font-weight:600}
-.choice.correct{background:rgba(178,147,88,.18)}
-.choice.wrong{background:rgba(155,40,39,.08)}
-.choice.disabled{pointer-events:none}
-.feedback{height:28px;padding-top:9px;font-family:"Bebas Neue","Arial Narrow",sans-serif;font-size:13px;letter-spacing:.12em;color:var(--muted)}
-.quiz-footer{margin-top:auto;padding-top:8px;display:grid;grid-template-columns:1fr auto;gap:18px;align-items:end}
-.hint-progress{font-family:"Bebas Neue","Arial Narrow",sans-serif;letter-spacing:.12em;color:var(--muted);font-size:12px}
-.hint-dots{display:flex;gap:6px;margin-top:8px}
-.hint-dots span{width:30px;height:4px;background:#c9c0aa;display:block}
-.hint-dots span.open{background:var(--red)}
-.next-button,.answer-button,.again-button{appearance:none;border:0;background:var(--ink);color:var(--paper);padding:12px 22px;font-family:"Bebas Neue","Arial Narrow",sans-serif;font-size:20px;letter-spacing:.1em;min-width:128px}
-.next-button:hover,.answer-button:hover,.again-button:hover{background:var(--red)}
-
-/* FINAL */
-.final-screen{padding-top:24px;padding-bottom:20px}
-.final-head{display:flex;justify-content:space-between;align-items:end}
-.final-title{font-family:"Noto Serif JP","Yu Mincho",serif;font-weight:900;letter-spacing:-.09em;font-size:clamp(34px,8vw,62px);line-height:.95;margin:8px 0 0}
-.final-hint{font-family:"Bebas Neue","Arial Narrow",sans-serif;font-size:18px;letter-spacing:.08em;white-space:nowrap}.final-hint b{font-size:32px;color:var(--red);font-weight:400}
-.final-rule{height:3px;background:var(--red);margin:15px 0 10px}
-.board{background:var(--dark);color:#eee5ce;padding:0 16px;margin:0;box-shadow:0 10px 24px rgba(18,30,36,.18)}
-.board-top{height:43px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(238,229,206,.35);font-family:"Bebas Neue","Arial Narrow",sans-serif;letter-spacing:.12em;font-size:18px}
-.board-top .venue{color:#eee5ce}.board-top .venue.hidden{color:#766f62}.board-top .race-no{font-size:23px}
-.board-row{height:54px;display:grid;grid-template-columns:42px 1fr 92px;align-items:center;border-bottom:1px dotted rgba(238,229,206,.3)}
-.board-row .rank{font-family:"Bebas Neue","Arial Narrow",sans-serif;font-size:22px;color:var(--gold)}
-.board-row .horse{font-family:"Noto Serif JP","Yu Mincho",serif;font-size:18px;font-weight:600;letter-spacing:.02em}.board-row.unknown .horse{font-family:"Bebas Neue","Arial Narrow",sans-serif;font-size:27px;letter-spacing:.23em}
-.board-row .time{font-family:"Bebas Neue","Arial Narrow",sans-serif;font-size:17px;text-align:right;color:#c7b997}
-.board-bottom{height:48px;display:flex;justify-content:space-between;align-items:center;font-family:"Bebas Neue","Arial Narrow",sans-serif;letter-spacing:.1em;font-size:16px}
-.final-help{font-size:13px;color:var(--muted);margin:10px 0 0}
-.answer-line{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:end;margin-top:auto;border-top:1px solid var(--line);padding-top:11px}
-.answer-label{font-family:"Bebas Neue","Arial Narrow",sans-serif;letter-spacing:.13em;font-size:13px;color:var(--red);margin-bottom:5px}
-.answer-input{width:100%;border:0;border-bottom:2px solid var(--ink);background:transparent;color:var(--ink);outline:0;padding:4px 0 6px;font-size:22px;font-weight:700;border-radius:0}
-.answer-input::placeholder{color:#aaa18f}
-
-/* RESULT */
-.result-screen{justify-content:center;text-align:center;align-items:center}
-.result-screen .eyebrow{font-size:15px}
-.result-title{font-family:"Noto Serif JP","Yu Mincho",serif;font-weight:900;font-size:clamp(68px,17vw,150px);line-height:.9;letter-spacing:-.12em;margin:20px 0 8px;color:var(--red)}
-.result-sub{font-family:"Bebas Neue","Arial Narrow",sans-serif;font-size:22px;letter-spacing:.16em;color:var(--ink)}
-.result-answer{margin:30px 0 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px 30px;width:min(620px,100%)}
-.result-answer small{display:block;font-family:"Bebas Neue","Arial Narrow",sans-serif;letter-spacing:.14em;color:var(--muted);font-size:13px}.result-answer strong{display:block;font-family:"Noto Serif JP","Yu Mincho",serif;font-size:clamp(27px,7vw,48px);margin-top:5px}
-.result-note{font-size:14px;color:var(--muted);margin:17px 0 22px}
-
-@media(max-width:520px){
-  .masthead{height:54px;padding:0 12px}.brand span,.brand b{font-size:18px}.masthead-side{font-size:8px}
-  #app{min-height:calc(100dvh - 54px)}
-  .screen{height:calc(100dvh - 54px);min-height:520px;padding:20px 17px 17px}
-  .title-screen{padding-top:24px;padding-bottom:19px}
-  .main-logo{font-size:clamp(66px,20vw,108px)}
-  .main-logo:after{font-size:12px;letter-spacing:.22em;margin-top:18px}
-  .title-mark{margin-top:20px}
-  .start-button{font-size:25px}
-  .quiz-title,.final-title{font-size:clamp(30px,9vw,45px)}
-  .quiz-count{font-size:16px}.quiz-count b,.final-hint b{font-size:28px}
-  .question-prompt{font-size:21px;line-height:1.45;margin:12px 0 10px}
-  .choice{min-height:53px}.choice .choice-text{font-size:17px}
-  .feedback{height:24px;padding-top:7px}
-  .hint-dots span{width:23px}
-  .next-button,.answer-button,.again-button{font-size:18px;padding:11px 18px;min-width:110px}
-  .board{padding:0 11px}.board-top{height:39px}.board-row{height:48px;grid-template-columns:34px 1fr 62px}.board-row .horse{font-size:15px}.board-row.unknown .horse{font-size:23px}.board-row .time{font-size:14px}.board-bottom{height:42px;font-size:14px}
-  .final-help{font-size:12px;margin-top:7px}
-  .answer-line{gap:10px}.answer-input{font-size:19px}
-}
-
-@media(max-height:700px){
-  .screen{padding-top:15px;padding-bottom:13px}.title-kicker{margin-bottom:10px}.main-logo{font-size:clamp(58px,15vw,120px)}.title-mark{margin-top:14px}.quiz-rule,.final-rule{margin:10px 0}.question-prompt{margin:8px 0}.choice{min-height:47px}.board-row{height:44px}.board-top{height:36px}.board-bottom{height:36px}.answer-line{padding-top:7px}
+button{color:inherit}
+.screen{display:none;width:100%;height:100dvh;min-height:100vh;padding:max(22px,env(safe-area-inset-top)) max(22px,env(safe-area-inset-right)) max(22px,env(safe-area-inset-bottom)) max(22px,env(safe-area-inset-left));position:relative}
+.screen.active{display:flex}
+#title{flex-direction:column;align-items:center;justify-content:center;background:radial-gradient(circle at 50% 42%,#142119 0,#0b110e 52%)}
+.title-mark{font-family:"DM Mono",monospace;letter-spacing:.48em;font-size:11px;color:var(--gold);margin-left:.48em}
+#title h1{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:clamp(76px,23vw,148px);line-height:.78;letter-spacing:.05em;margin:15px 0 32px}
+.title-rule{width:120px;height:1px;background:var(--gold);opacity:.55;margin-bottom:34px}
+.text-button{border:0;background:none;padding:10px 0;letter-spacing:.18em;font-family:"DM Mono",monospace;font-size:12px;cursor:pointer;text-transform:uppercase;color:var(--ink)}
+.text-button span{color:var(--gold);margin-left:14px;transition:transform .2s}
+.text-button:hover span{display:inline-block;transform:translateX(4px)}
+.topbar{height:48px;display:flex;justify-content:space-between;align-items:flex-start;border-bottom:1px solid var(--line);font-family:"DM Mono",monospace}
+.topbar strong{font-size:30px;font-weight:400;margin-left:12px;color:var(--gold)}
+.micro{font-family:"DM Mono",monospace;font-size:9px;letter-spacing:.18em;color:var(--muted)}
+.slash{color:var(--muted);margin:0 6px;font-family:"DM Mono",monospace}
+.quiz-main{width:min(720px,100%);margin:auto;align-self:center;padding:10px 0 0}
+.eyebrow{font-family:"DM Mono",monospace;color:var(--gold);font-size:10px;letter-spacing:.2em;margin-bottom:22px}
+#questionText{font-size:clamp(23px,6vw,39px);font-weight:600;line-height:1.65;margin:0 0 30px;max-width:680px}
+.choices{border-top:1px solid var(--line)}
+.choice{min-height:58px;border:0;border-bottom:1px solid var(--line);background:none;width:100%;display:grid;grid-template-columns:38px 1fr 30px;align-items:center;text-align:left;padding:0;cursor:pointer}
+.choice .num{font-family:"DM Mono",monospace;font-size:11px;color:var(--muted)}
+.choice .label{font-size:16px}
+.choice .mark{font-family:"DM Mono",monospace;font-size:22px;text-align:right;opacity:0;transform:scale(.7);transition:.2s}
+.choice:hover .label{color:var(--gold)}
+.choice.selected{cursor:default}
+.choice.selected.correct .mark{opacity:1;transform:scale(1);color:var(--gold)}
+.choice.selected.wrong .mark{opacity:1;transform:scale(1);color:var(--wine)}
+.choice.selected.correct .label{color:var(--gold)}
+.choice.selected.wrong .label{color:#a8a49a}
+.quiz-footer{height:62px;display:flex;align-items:flex-end;justify-content:space-between;border-top:1px solid var(--line)}
+.hint-status{font-family:"DM Mono",monospace;font-size:9px;letter-spacing:.12em;color:var(--muted);display:flex;gap:18px;align-items:center}
+.hint-status b{font-weight:400;color:var(--gold)}
+.next[disabled]{opacity:.25;cursor:default}
+#final{flex-direction:column}
+.final-main{width:min(650px,100%);margin:auto}
+.board-head{display:flex;justify-content:space-between;font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.18em;color:var(--gold);padding-bottom:14px;border-bottom:1px solid var(--line)}
+.board-row{display:grid;grid-template-columns:48px 1fr;min-height:55px;align-items:center;border-bottom:1px solid var(--line)}
+.board-row span{font-family:"Cormorant Garamond",serif;font-size:26px;color:var(--gold)}
+.board-row b{font-size:18px;font-weight:500;letter-spacing:.04em}
+.board-row.first b{font-size:clamp(25px,7vw,42px);letter-spacing:.08em;color:var(--ink)}
+.board-time{display:flex;justify-content:space-between;padding:15px 0;border-bottom:1px solid var(--line);font-family:"DM Mono",monospace;font-size:10px;color:var(--muted)}
+.board-time b{color:var(--ink);font-weight:400}
+.answer-area{margin-top:30px}
+.answer-area label{display:block;font-family:"DM Mono",monospace;font-size:9px;letter-spacing:.2em;color:var(--muted);margin-bottom:12px}
+.answer-area input{width:100%;background:transparent;border:0;border-bottom:1px solid var(--gold);outline:none;color:var(--ink);font-size:22px;padding:8px 0;border-radius:0}
+.answer-area input::placeholder{color:#4f554f}
+.final-footer{height:74px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:flex-end}
+.hint-list{display:flex;gap:12px;flex-wrap:wrap;font-family:"DM Mono",monospace;font-size:8px;color:#555c55;letter-spacing:.08em;max-width:70%}
+.hint-list span.open{color:var(--gold)}
+#result{align-items:center;justify-content:center;text-align:center;background:radial-gradient(circle at 50% 42%,#142119 0,#0b110e 55%)}
+.result-content{width:min(600px,100%);display:flex;flex-direction:column;align-items:center}
+.result-symbol{font-family:"Cormorant Garamond",serif;font-size:96px;line-height:1;color:var(--gold);margin:28px 0 8px}
+.result-title{font-size:clamp(44px,13vw,80px);font-weight:600;line-height:1.05}
+.result-sub{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:.2em;color:var(--muted);margin-top:14px}
+.result-answer{margin:48px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px 40px;display:flex;gap:28px;align-items:baseline}
+.result-answer span{font-family:"DM Mono",monospace;font-size:9px;color:var(--gold)}
+.result-answer b{font-size:22px;font-weight:500}
+#toast{position:fixed;left:50%;bottom:80px;transform:translate(-50%,20px);opacity:0;font-family:"DM Mono",monospace;font-size:10px;letter-spacing:.18em;color:var(--gold);transition:.25s;pointer-events:none}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-height:680px){
+ .quiz-main{padding-top:0}.eyebrow{margin-bottom:12px}#questionText{font-size:21px;margin-bottom:16px}.choice{min-height:48px}.quiz-footer{height:54px}
+ .board-row{min-height:46px}.board-row.first b{font-size:28px}.answer-area{margin-top:16px}.final-footer{height:58px}
 }
