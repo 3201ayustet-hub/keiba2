@@ -30,16 +30,20 @@ function valueText(v){return Array.isArray(v)?v.join(' ／ '):String(v??'—');}
 
 const panelMap=[
   {key:'time',label:'TIME',name:'TIME PANEL'},
-  {key:'fourth_fifth',label:'4TH + 5TH',name:'4TH + 5TH PANEL'},
+  {key:'fourth',label:'4TH',name:'4TH PANEL'},
+  {key:'fifth',label:'5TH',name:'5TH PANEL'},
   {key:'third',label:'3RD',name:'3RD PANEL'},
   {key:'second',label:'2ND',name:'2ND PANEL'},
   {key:'venue',label:'VENUE',name:'VENUE PANEL'}
 ];
 
 function earnedPanels(){
-  return panelMap.filter((_,i)=>score>=i+1);
+  return panelMap.filter((_,i)=>{
+    if(i===0)return score>=1;
+    if(i===1||i===2)return score>=2;
+    return score>=i+1;
+  });
 }
-
 function updateStock(){
   $$('.stock-chip').forEach(el=>{
     const key=el.dataset.panel;
@@ -62,6 +66,12 @@ function prepareQuiz(){
 }
 function renderQuestion(){
   const q=quiz[qIndex];
+  if(!q){
+    console.error('Question index out of range', {qIndex, quizLength:quiz.length});
+    alert('通常問題の読み込みに失敗しました。問題DBを確認してください。');
+    show('title-screen');
+    return;
+  }
   answered=false;
   $('#question-count').textContent=`QUESTION ${qIndex+1} / 5`;
   $('#category').textContent=q.category||'RACE QUIZ';
@@ -99,7 +109,7 @@ function answerQuestion(choice,btn){
   if(correct){
     const gained=earnedPanels().filter(p=>{
       if(score===1)return p.key==='time';
-      if(score===2)return p.key==='fourth_fifth';
+      if(score===2)return p.key==='fourth'||p.key==='fifth';
       if(score===3)return p.key==='third';
       if(score===4)return p.key==='second';
       if(score===5)return p.key==='venue';
@@ -162,12 +172,14 @@ function submitFinal(){
   mark.textContent=ok?'○':'×';
   mark.className='final-result-mark '+(ok?'ok':'ng');
   title.textContent=ok?'CONGRATULATIONS':'残念！';
-  copy.textContent=`${currentFinal.year}年 ${currentFinal.race} — 正解は「${currentFinal.winner}」`;
+  const raceInfo=`${currentFinal.year}年 ${currentFinal.race}`;
+  const answerInfo=`正解は「${currentFinal.winner}」`;
 
-  // Explicitly leave FINAL before showing the result screen.
-  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-  const resultScreen = document.getElementById('final-result-screen');
-  if (resultScreen) resultScreen.classList.add('active');
+  copy.textContent=ok
+    ? `${raceInfo} — ${answerInfo}`
+    : `${raceInfo} — ${answerInfo}`;
+
+  show('final-result-screen');
 }
 async function loadData(){
   const [qr,fr]=await Promise.all([
@@ -179,7 +191,9 @@ async function loadData(){
   finals=await fr.json();
   questions=Array.isArray(questions)?questions:(questions.questions||[]);
   finals=Array.isArray(finals)?finals:(finals.races||finals.finalRaces||[]);
-  questions=questions.filter(validateQuestion);
+  questions=questions
+    .filter(validateQuestion)
+    .map(q=>({...q,category:q.category||'RACE QUIZ'}));
   finals=finals.filter(validateFinal);
   if(questions.length<5)throw new Error('通常問題が5問未満です。');
   if(!finals.length)throw new Error('FINAL問題がありません。');
@@ -195,16 +209,9 @@ $('#final-start-btn').addEventListener('click',()=>{
   try{renderFinal();show('final-screen')}
   catch(e){alert(e.message)}
 });
-$('#final-submit').addEventListener('click',(e)=>{
-  e.preventDefault();
-  submitFinal();
-});
+$('#final-submit').addEventListener('click',submitFinal);
 $('#final-answer').addEventListener('keydown',e=>{if(e.key==='Enter')submitFinal()});
-$('#restart-btn').addEventListener('click',()=>{
-  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
-  $('#title-screen').classList.add('active');
-  currentFinal=null;
-});
+$('#restart-btn').addEventListener('click',()=>show('title-screen'));
 
 loadData().catch(e=>{
   console.error(e);
