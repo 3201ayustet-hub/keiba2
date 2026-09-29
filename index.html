@@ -3,148 +3,23 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#8d211d">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="競馬クイズ">
-<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png">
+<meta name="theme-color" content="#202a2e">
+<meta name="description" content="90年代の競馬専門誌とゲームUIを融合した競馬クイズ">
 <link rel="manifest" href="manifest.json">
-<title>競馬クイズ — 90s Racing Edition</title>
+<link rel="apple-touch-icon" href="icon-180.png">
 <link rel="stylesheet" href="style.css">
+<title>競馬クイズ — BOARD EDITION</title>
 </head>
 <body>
 <div class="grain"></div>
-<main class="magazine">
-  <header class="masthead">
-    <div class="mast-left">KEIBA QUIZ<br><span>RACING EDITION</span></div>
-    <div class="mast-logo">競馬<br><b>クイズ</b></div>
-    <div class="mast-right">VOL. 02<br>2026</div>
-  </header>
+<header class="masthead">
+  <div class="masthead-left">KEIBA QUIZ<br><span>BOARD EDITION</span></div>
+  <div class="logo"><span>競馬</span><b>クイズ</b></div>
+  <div class="masthead-right">VOL. 03<br><span>2026</span></div>
+</header>
 
-  <section id="start" class="screen active">
-    <div class="cover">
-      <div class="stamp">NEW GAME</div>
-      <div class="cover-kicker">THE HORSE RACING QUIZ</div>
-      <h1>5問の先に、<br><em>掲示板が待つ。</em></h1>
-      <p class="lead">通常問題に正解するたび、FINALの着順掲示板にヒントが1枚ずつ戻ってくる。<br><b>5問全問正解なら、5枚すべてOPEN。</b></p>
-      <div class="cover-lines"></div>
-      <div class="rules">
-        <div><b>通常</b> 5問</div>
-        <div><b>FINAL</b> 1問</div>
-        <div><b>答え</b> 馬名のみ</div>
-      </div>
-      <button id="startBtn" class="ink-button">ゲーム開始 ▶</button>
-      <p class="tiny">問題DBから通常5問をランダム出題。FINALは独立したGⅠレースDBから選択。</p>
-    </div>
-  </section>
+<main id="app"></main>
 
-  <section id="quiz" class="screen">
-    <div class="section-head">
-      <div><span class="red-label">QUIZ</span><h2>勝負の5問</h2></div>
-      <div class="counter" id="progress">第1問 / 5</div>
-    </div>
-    <div class="red-rule"></div>
-
-    <article class="question-paper">
-      <div class="q-meta">
-        <span id="qType"></span><span id="qDifficulty"></span>
-      </div>
-      <h3 id="question"></h3>
-      <div id="choices" class="choices"></div>
-      <div id="feedback" class="feedback"></div>
-    </article>
-
-    <section class="hint-preview">
-      <div class="hint-preview-head">
-        <b>FINAL HINT BOARD</b>
-        <span>正解数だけ開く</span>
-      </div>
-      <div id="hintMini" class="hint-mini"></div>
-    </section>
-
-    <div class="scorebar">
-      <span>SCORE</span><strong id="score">0</strong>
-    </div>
-  </section>
-
-  <section id="final" class="screen">
-    <div class="section-head">
-      <div><span class="red-label">FINAL</span><h2>着順掲示板クイズ</h2></div>
-      <div class="counter" id="finalHintCount">HINT 0 / 5</div>
-    </div>
-    <div class="red-rule"></div>
-
-    <div class="final-intro">
-      <b>この掲示板の1着馬を当てろ。</b>
-      <span>レース名は表示されません。</span>
-    </div>
-
-    <article class="scoreboard-wrap">
-      <div class="scoreboard">
-        <div class="board-top">
-          <div class="board-venue" id="boardVenue">？？？？</div>
-          <div class="board-race">11 R</div>
-        </div>
-
-        <div class="board-row winner">
-          <div class="place one">Ⅰ</div>
-          <div class="horse hidden" id="board1">？？？？？？</div>
-          <div class="time hidden-time" id="board1time">—</div>
-        </div>
-        <div class="board-row">
-          <div class="place two">Ⅱ</div>
-          <div class="horse" id="board2">？？？？？？</div>
-          <div class="margin" id="board2m">—</div>
-        </div>
-        <div class="board-row">
-          <div class="place three">Ⅲ</div>
-          <div class="horse" id="board3">？？？？？？</div>
-          <div class="margin" id="board3m">—</div>
-        </div>
-        <div class="board-row">
-          <div class="place four">Ⅳ</div>
-          <div class="horse" id="board4">？？？？？？</div>
-          <div class="margin" id="board4m">—</div>
-        </div>
-        <div class="board-row">
-          <div class="place five">Ⅴ</div>
-          <div class="horse" id="board5">？？？？？？</div>
-          <div class="margin" id="board5m">—</div>
-        </div>
-
-        <div class="board-footer">
-          <div class="surface">芝 ？？？？m</div>
-          <div class="race-time" id="boardTime">TIME --:--.-</div>
-        </div>
-      </div>
-
-      <div class="board-caption">
-        <span>昭和〜平成競馬場掲示板を意識したオリジナルデザイン</span>
-        <span id="raceYear">20--</span>
-      </div>
-    </article>
-
-    <div class="final-answer">
-      <label for="answer">1着馬名</label>
-      <div class="answer-line">
-        <input id="answer" type="text" placeholder="馬名を入力" autocomplete="off" inputmode="text">
-        <button id="answerBtn" class="ink-button">決定</button>
-      </div>
-      <div id="finalFeedback" class="feedback"></div>
-    </div>
-  </section>
-
-  <section id="result" class="screen">
-    <div class="result">
-      <div class="cover-kicker">RESULT</div>
-      <h2 id="resultTitle">RESULT</h2>
-      <div class="result-score"><span>FINAL SCORE</span><b id="resultScore">0</b></div>
-      <div id="resultStats" class="result-stats"></div>
-      <div class="answer-reveal">FINAL ANSWER<br><strong id="answerReveal"></strong></div>
-      <button id="againBtn" class="ink-button">もう一度 ▶</button>
-    </div>
-  </section>
-</main>
 <script src="app.js"></script>
 </body>
 </html>
