@@ -1,15 +1,60 @@
-const state={normalQuestions:[],finalRaces:[],currentQuestions:[],currentIndex:0,currentFinal:null,score:0,correctNormal:0,finalCorrect:false,usedQuestionIds:new Set(),usedFinalIds:new Set()};
-const $=id=>document.getElementById(id), screens=["start","quiz","final","result"];
-function showScreen(n){screens.forEach(s=>$("screen-"+s).classList.toggle("active",s===n))}
-function shuffle(a){return [...a].sort(()=>Math.random()-.5)}
-async function loadData(){const [a,b]=await Promise.all([fetch("data/questions.json",{cache:"no-store"}),fetch("data/final_races.json",{cache:"no-store"})]);if(!a.ok||!b.ok)throw Error("データを読み込めません");state.normalQuestions=await a.json();state.finalRaces=await b.json()}
-function pickQuestions(){let p=state.normalQuestions.filter(q=>!state.usedQuestionIds.has(q.id));if(p.length<5)p=state.normalQuestions;let x=shuffle(p).slice(0,5);x.forEach(q=>state.usedQuestionIds.add(q.id));return x}
-function pickFinal(){let p=state.finalRaces.filter(r=>!state.usedFinalIds.has(r.id));if(!p.length)p=state.finalRaces;let r=p[Math.floor(Math.random()*p.length)];state.usedFinalIds.add(r.id);return r}
-function startGame(){state.currentQuestions=pickQuestions();state.currentIndex=0;state.currentFinal=pickFinal();state.score=0;state.correctNormal=0;state.finalCorrect=false;renderHints(0);showScreen("quiz");renderQuestion()}
-function renderQuestion(){let q=state.currentQuestions[state.currentIndex];$("progressLabel").textContent=`第${state.currentIndex+1}問 / 5`;$("scoreLabel").textContent=`SCORE ${state.score}`;$("progressFill").style.width=`${((state.currentIndex+1)/5)*100}%`;$("difficultyLabel").textContent=q.difficulty;$("categoryLabel").textContent=q.category;$("questionText").textContent=q.question;$("feedback").textContent="";$("choices").innerHTML="";shuffle(q.choices).forEach(c=>{let b=document.createElement("button");b.className="choice";b.textContent=c;b.type="button";b.onclick=()=>answerNormal(q,c,b);$("choices").appendChild(b)})}
-function answerNormal(q,c,clicked){let bs=[...$("choices").querySelectorAll("button")];bs.forEach(b=>b.disabled=true);let ok=c===q.answer;if(ok){clicked.classList.add("correct");state.correctNormal++;let db={"★☆☆":100,"★★☆":200,"★★★":350,"★★★★":500,"★★★★★":700}[q.difficulty]||200;state.score+=db;$("feedback").textContent=`正解！ +${db}`;renderHints(state.currentIndex+1)}else{clicked.classList.add("wrong");let x=bs.find(b=>b.textContent===q.answer);if(x)x.classList.add("correct");$("feedback").textContent=`不正解。正解は「${q.answer}」`}setTimeout(()=>{if(state.currentIndex<4){state.currentIndex++;renderQuestion()}else{renderFinal();showScreen("final")}},750)}
-function renderHints(n){let r=state.currentFinal,h=[["① TIME",r?.time],["② 4・5着",r?`${r.finish4} / ${r.finish5}`:""],["③ 3着",r?.finish3],["④ 2着",r?.finish2],["⑤ COURSE",r?.course]];$("hintList").innerHTML=h.map((x,i)=>`<div class="hint ${i<n?"":"locked"}"><span class="hint-name">${x[0]}</span><strong>${i<n?x[1]:"🔒"}</strong></div>`).join("")}
-function renderFinal(){let r=state.currentFinal;$("finalScoreLabel").textContent=`SCORE ${state.score}`;$("finalRaceTitle").textContent=r.raceName;$("board").innerHTML=`<div class="board-head"><span>${r.year} ${r.raceName}</span><span>${r.course}</span></div><div class="board-row"><span>1</span><strong>？？？？？？</strong><span>${r.time}</span><span>—</span></div><div class="board-row"><span>2</span><strong>${r.finish2}</strong><span>—</span><span>${r.margin2}</span></div><div class="board-row"><span>3</span><strong>${r.finish3}</strong><span>—</span><span>${r.margin3}</span></div><div class="board-row"><span>4</span><strong>${r.finish4}</strong><span>—</span><span>${r.margin4}</span></div><div class="board-row"><span>5</span><strong>${r.finish5}</strong><span>—</span><span>${r.margin5}</span></div>`;$("finalAnswer").value="";$("finalFeedback").textContent=""}
-function submitFinal(){let v=$("finalAnswer").value.trim();if(!v)return;let ok=v===state.currentFinal.winner;state.finalCorrect=ok;if(ok){state.score+=1000;$("finalFeedback").textContent="正解！ FINAL BONUS +1000"}else $("finalFeedback").textContent=`不正解。正解は「${state.currentFinal.winner}」`;$("finalSubmitBtn").disabled=true;$("finalAnswer").disabled=true;setTimeout(showResult,1000)}
-function showResult(){let total=state.correctNormal+(state.finalCorrect?1:0);$("resultTitle").textContent=state.finalCorrect?"見事、レースを特定！":"惜しい！";$("resultScore").textContent=state.score.toLocaleString();$("resultStats").innerHTML=`<div><strong>${state.correctNormal}/5</strong><span>通常問題</span></div><div><strong>${state.finalCorrect?"正解":"不正解"}</strong><span>FINAL</span></div><div><strong>${total}/6</strong><span>総合正解</span></div>`;showScreen("result")}
-$("startBtn").onclick=startGame;$("againBtn").onclick=startGame;$("finalSubmitBtn").onclick=submitFinal;$("finalAnswer").onkeydown=e=>{if(e.key==="Enter")submitFinal()};loadData().catch(e=>{console.error(e);$("startBtn").disabled=true;$("startBtn").textContent="データ読み込みエラー"})
+const state={q:[],r:null,i:0,score:0,nCorrect:0,finalCorrect:false};
+const $=id=>document.getElementById(id);
+const screens=["start","quiz","final","result"];
+const show=s=>screens.forEach(x=>$ (x) && $(""+x).classList.toggle("active",x===s));
+const shuffle=a=>[...a].sort(()=>Math.random()-.5);
+
+async function init(){
+  const [qr,fr]=await Promise.all([fetch("questions.json"),fetch("final_races.json")]);
+  if(!qr.ok||!fr.ok)throw Error("問題データを読み込めません");
+  state.allQ=await qr.json();state.allR=await fr.json();
+}
+function start(){
+  if(state.allQ.length<5||!state.allR.length){alert("問題データが不足しています");return}
+  state.q=shuffle(state.allQ).slice(0,5);state.r=state.allR[Math.floor(Math.random()*state.allR.length)];
+  state.i=0;state.score=0;state.nCorrect=0;state.finalCorrect=false;renderHints(0);show("quiz");renderQ();
+}
+function renderQ(){
+  const q=state.q[state.i];
+  $("progress").textContent=`第${state.i+1}問 / 5`;$("score").textContent=state.score;
+  $("category").textContent=q.category;$("difficulty").textContent=q.difficulty;$("question").textContent=q.question;
+  $("feedback").textContent="";$("choices").innerHTML="";
+  shuffle(q.choices).forEach(c=>{const b=document.createElement("button");b.className="choice";b.textContent=c;b.onclick=()=>answer(q,c,b);$("choices").appendChild(b)});
+}
+function answer(q,c,b){
+  const bs=[...document.querySelectorAll(".choice")];bs.forEach(x=>x.disabled=true);
+  if(c===q.answer){b.classList.add("correct");state.nCorrect++;state.score+=100;renderHints(state.i+1);$("feedback").textContent="正解！ ヒントが開いた。"}
+  else{b.classList.add("wrong");bs.find(x=>x.textContent===q.answer)?.classList.add("correct");$("feedback").textContent=`不正解。正解は「${q.answer}」`}
+  setTimeout(()=>{if(state.i<4){state.i++;renderQ()}else{renderFinal();show("final")}},850);
+}
+function renderHints(n){
+  const r=state.r;if(!r)return;
+  const h=[["① TIME",r.time],["② 4・5着",`${r.finish4} / ${r.finish5}`],["③ 3着",r.finish3],["④ 2着",r.finish2],["⑤ 競馬場",r.course]];
+  $("hints").innerHTML=h.map((x,i)=>`<div class="hint ${i<n?"":"locked"}"><span class="hint-name">${x[0]}</span><strong>${i<n?x[1]:"？？？"}</strong></div>`).join("");
+}
+function renderFinal(){
+  const r=state.r;$("raceName").textContent=r.raceName;
+  $("board").innerHTML=`<div class="board-head"><span>${r.year} ${r.raceName}</span><span>${r.course}</span></div>
+  <div class="board-row"><span>1着</span><strong>？？？？？？</strong><span>${r.time}</span><span>—</span></div>
+  <div class="board-row"><span>2着</span><strong>${r.finish2}</strong><span>—</span><span>${r.margin2}</span></div>
+  <div class="board-row"><span>3着</span><strong>${r.finish3}</strong><span>—</span><span>${r.margin3}</span></div>
+  <div class="board-row"><span>4着</span><strong>${r.finish4}</strong><span>—</span><span>${r.margin4}</span></div>
+  <div class="board-row"><span>5着</span><strong>${r.finish5}</strong><span>—</span><span>${r.margin5}</span></div>`;
+  $("answer").value="";$("finalFeedback").textContent="";
+}
+function finalAnswer(){
+  const v=$("answer").value.trim();if(!v)return;
+  state.finalCorrect=v===state.r.winner;
+  if(state.finalCorrect){state.score+=1000;$("finalFeedback").textContent="正解！ FINAL BONUS +1000"}
+  else $("finalFeedback").textContent=`不正解。正解は「${state.r.winner}」`;
+  $("answerBtn").disabled=true;$("answer").disabled=true;setTimeout(result,1100);
+}
+function result(){
+  $("resultTitle").textContent=state.finalCorrect?"レースを読み切った！":"惜しい！";
+  $("resultScore").textContent=state.score.toLocaleString();
+  $("resultStats").innerHTML=`<div>${state.nCorrect}/5<span>通常問題</span></div><div>${state.finalCorrect?"正解":"不正解"}<span>FINAL</span></div>`;
+  show("result");
+}
+$("startBtn").onclick=start;$("againBtn").onclick=start;$("answerBtn").onclick=finalAnswer;
+$("answer").onkeydown=e=>{if(e.key==="Enter")finalAnswer()};
+init().catch(e=>{console.error(e);$("startBtn").disabled=true;$("startBtn").textContent="データ読み込みエラー"});

@@ -1,41 +1,96 @@
 <!doctype html>
 <html lang="ja">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>馬名クイズ</title><link rel="stylesheet" href="assets/style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#8f211d">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="競馬クイズ">
+<link rel="apple-touch-icon" sizes="180x180" href="icon-180.png">
+<link rel="manifest" href="manifest.json">
+<title>競馬クイズ — 昭和末〜平成競馬雑誌風</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<main id="app">
-<header class="app-header"><div><p class="eyebrow">KEIBA QUIZ</p><h1>馬名クイズ</h1></div></header>
+<div class="paper-noise"></div>
+<main class="magazine">
+  <header class="masthead">
+    <div class="issue">KEIBA QUIZ / VOL. 01</div>
+    <div class="logo">競馬<br><span>クイズ</span></div>
+    <div class="date">1990s STYLE<br>RACING EDITION</div>
+  </header>
 
-<section id="screen-start" class="screen active">
-<div class="hero-card"><div class="horse-mark">🐎</div>
-<h2>5問正解して、GⅠを暴け。</h2>
-<p>通常クイズを5問。正解するたびに着順掲示板のヒントが1枚ずつ開きます。最後に隠された1着馬を当てよう。</p>
-<button id="startBtn" class="primary-button">ゲーム開始</button></div>
-<div class="info-grid"><div><strong>5</strong><span>通常問題</span></div><div><strong>5</strong><span>ヒント</span></div><div><strong>1</strong><span>FINAL</span></div></div>
-</section>
+  <section id="start" class="screen active">
+    <div class="cover">
+      <div class="cover-kicker">THE HORSE RACING QUIZ</div>
+      <h1>5問解いて、<br><em>GⅠを暴け。</em></h1>
+      <p class="lead">正解するたび、着順掲示板のヒントが一枚ずつ開く。<br>最後に隠された「1着馬」を当てろ。</p>
+      <div class="cover-stripe"></div>
+      <button id="startBtn" class="ink-button">ゲーム開始 ▶</button>
+      <div class="small-print">通常問題 5問 / FINAL 1問 / 2018年以降・GⅠ</div>
+    </div>
+  </section>
 
-<section id="screen-quiz" class="screen">
-<div class="status-row"><span id="progressLabel"></span><span id="scoreLabel"></span></div>
-<div class="progress-bar"><div id="progressFill"></div></div>
-<article class="question-card"><div class="question-meta"><span id="difficultyLabel"></span><span id="categoryLabel"></span></div>
-<h2 id="questionText"></h2><div id="choices" class="choices"></div><div id="feedback" class="feedback"></div></article>
-<aside class="hint-panel"><div class="hint-title">FINAL HINTS</div><div id="hintList" class="hint-list"></div></aside>
-</section>
+  <section id="quiz" class="screen">
+    <div class="headline-row">
+      <div class="headline">勝負の5問</div>
+      <div id="progress">第1問 / 5</div>
+    </div>
+    <div class="red-rule"></div>
 
-<section id="screen-final" class="screen">
-<div class="status-row"><span>FINAL QUIZ</span><span id="finalScoreLabel"></span></div>
-<div class="final-card"><p class="eyebrow">2018年以降・GⅠ</p><h2 id="finalRaceTitle"></h2>
-<div id="board" class="board"></div><p class="final-prompt">このレースの1着馬は？</p>
-<div class="answer-row"><input id="finalAnswer" placeholder="馬名を入力" autocomplete="off"><button id="finalSubmitBtn" class="primary-button">回答</button></div>
-<div id="finalFeedback" class="feedback"></div></div>
-</section>
+    <article class="question-paper">
+      <div class="question-top">
+        <span id="category"></span>
+        <span id="difficulty"></span>
+      </div>
+      <h2 id="question"></h2>
+      <div id="choices" class="choices"></div>
+      <div id="feedback" class="feedback"></div>
+    </article>
 
-<section id="screen-result" class="screen">
-<div class="result-card"><p class="eyebrow">RESULT</p><h2 id="resultTitle"></h2><div id="resultScore" class="result-score"></div>
-<div id="resultStats" class="result-stats"></div><button id="againBtn" class="primary-button">もう一度遊ぶ</button></div>
-</section>
+    <section class="hint-paper">
+      <div class="hint-title">FINAL RACE / HINT BOARD</div>
+      <div id="hints" class="hints"></div>
+    </section>
+    <div class="scoreline">SCORE <strong id="score">0</strong></div>
+  </section>
+
+  <section id="final" class="screen">
+    <div class="headline-row">
+      <div class="headline">FINAL ROUND</div>
+      <div>2018– / GⅠ</div>
+    </div>
+    <div class="red-rule"></div>
+
+    <article class="final-paper">
+      <div class="race-heading">
+        <div class="race-number">GⅠ</div>
+        <div>
+          <div class="caption">着順掲示板クイズ</div>
+          <h2 id="raceName"></h2>
+        </div>
+      </div>
+      <div id="board" class="race-board"></div>
+      <div class="final-question">このレースの <b>1着馬</b> は？</div>
+      <div class="answer-box">
+        <input id="answer" type="text" placeholder="馬名を入力" autocomplete="off">
+        <button id="answerBtn" class="ink-button">決定</button>
+      </div>
+      <div id="finalFeedback" class="feedback"></div>
+    </article>
+  </section>
+
+  <section id="result" class="screen">
+    <div class="result-cover">
+      <div class="cover-kicker">RESULT</div>
+      <h1 id="resultTitle"></h1>
+      <div class="big-score" id="resultScore"></div>
+      <div id="resultStats" class="stats"></div>
+      <button id="againBtn" class="ink-button">もう一度 ▶</button>
+    </div>
+  </section>
 </main>
-<script src="assets/app.js"></script>
-</body></html>
+<script src="app.js"></script>
+</body>
+</html>

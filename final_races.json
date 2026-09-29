@@ -1,6 +1,6 @@
 [
   {
-    "id": "f001",
+    "id": "demo-final-01",
     "year": 2022,
     "raceName": "天皇賞（秋）",
     "course": "東京",
@@ -13,24 +13,6 @@
     "finish4": "ジャックドール",
     "margin4": "1 1/2",
     "finish5": "ジオグリフ",
-    "margin5": "1 1/4",
-    "source": "要確認"
-  },
-  {
-    "id": "f002",
-    "year": 2019,
-    "raceName": "有馬記念",
-    "course": "中山",
-    "time": "2:30.5",
-    "winner": "リスグラシュー",
-    "finish2": "サートゥルナーリア",
-    "margin2": "5",
-    "finish3": "ワールドプレミア",
-    "margin3": "1/2",
-    "finish4": "フィエールマン",
-    "margin4": "ハナ",
-    "finish5": "キセキ",
-    "margin5": "クビ",
-    "source": "要確認"
+    "margin5": "1 1/4"
   }
 ]
