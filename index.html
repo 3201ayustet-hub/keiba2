@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#0b110e">
+<meta name="theme-color" content="#09100d">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="manifest" href="manifest.json">
@@ -17,53 +17,57 @@
 <body>
 <div id="app">
   <section id="title" class="screen active">
-    <div class="title-mark">KEIBA</div>
-    <h1>QUIZ</h1>
+    <div class="title-kicker">KEIBA QUIZ</div>
+    <div class="title-logo">競馬<br><span>QUIZ</span></div>
     <div class="title-rule"></div>
     <button id="startBtn" class="text-button">START <span>→</span></button>
   </section>
 
   <section id="quiz" class="screen">
     <header class="topbar">
-      <div><span class="micro">QUESTION</span><strong id="qNo">01</strong><span class="slash">/</span><span class="micro">05</span></div>
-      <div class="micro" id="qType">GⅡ / GⅢ</div>
+      <div class="question-counter"><span class="micro">QUESTION</span><strong id="qNo">01</strong><span class="slash">/</span><span class="micro">05</span></div>
+      <div class="question-type"><span class="micro" id="qType">GⅡ / GⅢ</span></div>
     </header>
+
     <main class="quiz-main">
-      <div class="eyebrow" id="qEyebrow">WINNER</div>
+      <div class="quiz-heading">
+        <span class="eyebrow" id="qEyebrow">WINNER</span>
+        <span class="progress-dots" aria-label="進行状況"><i></i><i></i><i></i><i></i><i></i></span>
+      </div>
       <h2 id="questionText"></h2>
-      <div id="choices" class="choices"></div>
+      <div id="choices" class="choices" role="group" aria-label="選択肢"></div>
     </main>
+
     <footer class="quiz-footer">
-      <div class="hint-status"><span>FINAL BOARD</span><b id="hintCount">01 / 05</b></div>
+      <div class="hint-status"><span>BOARD HINT</span><b id="hintCount">00 / 05</b></div>
       <button id="nextBtn" class="text-button next" disabled>NEXT <span>→</span></button>
     </footer>
   </section>
 
   <section id="final" class="screen">
     <header class="topbar">
-      <div><span class="micro">FINAL</span></div>
-      <div class="micro" id="finalHint">HINT 01 / 05</div>
+      <div><span class="micro">FINAL BOARD</span></div>
+      <div class="micro" id="finalHint">HINT 00 / 05</div>
     </header>
     <main class="final-main">
-      <div class="board-head">
-        <span id="courseName">TOKYO</span>
-        <span>11 R</span>
+      <div class="board-shell">
+        <div class="board-head"><span id="courseName">????</span><span>R</span></div>
+        <div class="board-rows">
+          <div class="board-row first"><span>Ⅰ</span><b id="firstHorse">？？？？</b></div>
+          <div class="board-row"><span>Ⅱ</span><b id="secondHorse">— — — —</b></div>
+          <div class="board-row"><span>Ⅲ</span><b id="thirdHorse">— — — —</b></div>
+          <div class="board-row"><span>Ⅳ</span><b id="fourthHorse">— — — —</b></div>
+          <div class="board-row"><span>Ⅴ</span><b id="fifthHorse">— — — —</b></div>
+        </div>
+        <div class="board-time"><span>TIME</span><b id="raceTime">—:—.—</b></div>
       </div>
-      <div class="board-rows">
-        <div class="board-row first"><span>Ⅰ</span><b id="firstHorse">????????</b></div>
-        <div class="board-row"><span>Ⅱ</span><b id="secondHorse">— — — —</b></div>
-        <div class="board-row"><span>Ⅲ</span><b id="thirdHorse">— — — —</b></div>
-        <div class="board-row"><span>Ⅳ</span><b id="fourthHorse">— — — —</b></div>
-        <div class="board-row"><span>Ⅴ</span><b id="fifthHorse">— — — —</b></div>
-      </div>
-      <div class="board-time"><span>TIME</span><b id="raceTime">— — —</b></div>
       <div class="answer-area">
-        <label for="answerInput">YOUR ANSWER</label>
+        <label for="answerInput">1ST HORSE</label>
         <input id="answerInput" type="text" autocomplete="off" inputmode="text" placeholder="馬名を入力">
       </div>
     </main>
     <footer class="final-footer">
-      <div class="hint-list">
+      <div class="hint-list" aria-label="ヒント進行">
         <span id="h1">01 TIME</span><span id="h2">02 4TH / 5TH</span><span id="h3">03 3RD</span><span id="h4">04 2ND</span><span id="h5">05 COURSE</span>
       </div>
       <button id="answerBtn" class="text-button next">ANSWER <span>→</span></button>
@@ -72,7 +76,7 @@
 
   <section id="result" class="screen">
     <div class="result-content">
-      <div class="micro" id="resultKicker">FINAL</div>
+      <div class="micro">FINAL RESULT</div>
       <div id="resultSymbol" class="result-symbol">○</div>
       <div id="resultTitle" class="result-title">的中</div>
       <div id="resultSub" class="result-sub">BOARD READ COMPLETE</div>

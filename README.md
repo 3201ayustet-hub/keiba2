@@ -1,18 +1,17 @@
-# KEIBA QUIZ
+# KEIBA QUIZ — v9
 
-GitHub Pages向けの静的Webアプリです。
+GitHub Pages向けの静的競馬クイズアプリ。
 
-## 構成
-- index.html
-- style.css
-- app.js
-- questions.json
-- final_races.json
-- manifest.json
-- icon-180.png
-- icon-512.png
+## 今回の変更
+- 通常問題を1画面完結の縦レイアウトに再設計。
+- 参考にした着順掲示板の「細い罫線＋番号＋情報」の構造を通常問題にも流用。
+- 選択肢は横幅を十分に使い、スマートフォンでも馬名が縦一列に崩れない。
+- 正解時は選択した肢に○、不正解時は選択した肢に×のみ表示。
+- 不正解時に正解肢は表示しない。
+- 5問の正解数だけFINALのヒントを開放。
+- FINALヒント順は TIME → 4・5着 → 3着 → 2着 → 競馬場。
+- FINALではレース名を表示しない。
+- 最初に作成したアイコンを継続使用。
 
-問題を増やす場合は `questions.json`、FINAL問題を増やす場合は `final_races.json` に追加してください。
-
-通常問題は5問固定。正解1問ごとにFINALヒントが1段階開き、不正解では進みません。
-FINALの答えは1着馬名のみです。
+## GitHub Pages
+このフォルダの中身をそのままリポジトリ直下へアップロードしてください。
