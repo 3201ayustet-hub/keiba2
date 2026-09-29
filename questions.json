@@ -1,67 +1,642 @@
 [
   {
-    "id": "demo-q01",
-    "category": "天皇賞（秋）",
-    "difficulty": "★★☆",
-    "question": "2022年の天皇賞（秋）を制した馬は？",
+    "id": "q001",
+    "type": "race_g2g3",
+    "typeLabel": "GⅡ・GⅢ / 勝ち馬",
+    "difficulty": 1,
+    "question": "2023年の京都大賞典（GⅡ）を勝った馬は？",
+    "choices": [
+      "プラダリア",
+      "ボッケリーニ",
+      "ディープボンド",
+      "ヴェラアズール"
+    ],
+    "answer": "プラダリア",
+    "eligibility": "2018年度以降に活躍 / GⅢ以上勝ち馬を母集団とする通常問題",
+    "answer_only": true
+  },
+  {
+    "id": "q002",
+    "type": "race_g2g3",
+    "typeLabel": "GⅡ・GⅢ / 勝ち馬",
+    "difficulty": 1,
+    "question": "2023年の金鯱賞（GⅡ）を勝った馬は？",
+    "choices": [
+      "プログノーシス",
+      "フェーングロッテン",
+      "アラタ",
+      "ディープモンスター"
+    ],
+    "answer": "プログノーシス",
+    "eligibility": "2018年度以降に活躍 / GⅢ以上勝ち馬を母集団とする通常問題",
+    "answer_only": true
+  },
+  {
+    "id": "q003",
+    "type": "race_g2g3",
+    "typeLabel": "GⅡ・GⅢ / 勝ち馬",
+    "difficulty": 1,
+    "question": "2022年の京都大賞典（GⅡ）を勝った馬は？",
+    "choices": [
+      "ヴェラアズール",
+      "ボッケリーニ",
+      "ディープボンド",
+      "マイネルウィルトス"
+    ],
+    "answer": "ヴェラアズール",
+    "eligibility": "2018年度以降に活躍 / GⅢ以上勝ち馬を母集団とする通常問題",
+    "answer_only": true
+  },
+  {
+    "id": "q004",
+    "type": "race_g2g3",
+    "typeLabel": "GⅡ・GⅢ / 勝ち馬",
+    "difficulty": 1,
+    "question": "2022年の毎日王冠（GⅡ）を勝った馬は？",
+    "choices": [
+      "サリオス",
+      "ジャスティンカフェ",
+      "ダノンザキッド",
+      "レイパパレ"
+    ],
+    "answer": "サリオス",
+    "eligibility": "2018年度以降に活躍 / GⅢ以上勝ち馬を母集団とする通常問題",
+    "answer_only": true
+  },
+  {
+    "id": "q005",
+    "type": "race_g2g3",
+    "typeLabel": "GⅡ・GⅢ / 勝ち馬",
+    "difficulty": 1,
+    "question": "2021年の毎日王冠（GⅡ）を勝った馬は？",
+    "choices": [
+      "シュネルマイスター",
+      "ダノンキングリー",
+      "ポタジェ",
+      "ダイワキャグニー"
+    ],
+    "answer": "シュネルマイスター",
+    "eligibility": "2018年度以降に活躍 / GⅢ以上勝ち馬を母集団とする通常問題",
+    "answer_only": true
+  },
+  {
+    "id": "q006",
+    "type": "race_g2g3",
+    "typeLabel": "GⅡ・GⅢ / 勝ち馬",
+    "difficulty": 1,
+    "question": "2020年のチューリップ賞（GⅡ）を勝った馬は？",
+    "choices": [
+      "マルターズディオサ",
+      "クラヴァシュドール",
+      "レシステンシア",
+      "ミヤマザクラ"
+    ],
+    "answer": "マルターズディオサ",
+    "eligibility": "2018年度以降に活躍 / GⅢ以上勝ち馬を母集団とする通常問題",
+    "answer_only": true
+  },
+  {
+    "id": "q007",
+    "type": "race_g2g3",
+    "typeLabel": "GⅡ・GⅢ / 勝ち馬",
+    "difficulty": 1,
+    "question": "2021年の府中牝馬ステークス（GⅡ）を勝った馬は？",
+    "choices": [
+      "シャドウディーヴァ",
+      "アンドラステ",
+      "マルターズディオサ",
+      "ドナアトラエンテ"
+    ],
+    "answer": "シャドウディーヴァ",
+    "eligibility": "2018年度以降に活躍 / GⅢ以上勝ち馬を母集団とする通常問題",
+    "answer_only": true
+  },
+  {
+    "id": "q008",
+    "type": "place_g1",
+    "typeLabel": "GⅠ / 2着",
+    "difficulty": 2,
+    "question": "2022年の日本ダービーで2着だった馬は？",
+    "choices": [
+      "イクイノックス",
+      "アスクビクターモア",
+      "ダノンベルーガ",
+      "プラダリア"
+    ],
+    "answer": "イクイノックス",
+    "eligibility": "2018年度以降に活躍 / GⅢ以上勝ち馬を母集団とする通常問題",
+    "answer_only": true
+  },
+  {
+    "id": "q009",
+    "type": "place_g1",
+    "typeLabel": "GⅠ / 3着",
+    "difficulty": 2,
+    "question": "2022年の日本ダービーで3着だった馬は？",
+    "choices": [
+      "アスクビクターモア",
+      "ダノンベルーガ",
+      "プラダリア",
+      "ジオグリフ"
+    ],
+    "answer": "アスクビクターモア",
+    "eligibility": "2018年度以降に活躍 / GⅢ以上勝ち馬を母集団とする通常問題",
+    "answer_only": true
+  },
+  {
+    "id": "q010",
+    "type": "place_g1",
+    "typeLabel": "GⅠ / 5着",
+    "difficulty": 2,
+    "question": "2022年の日本ダービーで5着だった馬は？",
+    "choices": [
+      "プラダリア",
+      "キラーアビリティ",
+      "ジオグリフ",
+      "オニャンコポン"
+    ],
+    "answer": "プラダリア",
+    "eligibility": "2018年度以降に活躍 / GⅢ以上勝ち馬を母集団とする通常問題",
+    "answer_only": true
+  },
+  {
+    "id": "q011",
+    "type": "place_g1",
+    "typeLabel": "GⅠ / 2着",
+    "difficulty": 2,
+    "question": "2021年の天皇賞（秋）で2着だった馬は？",
+    "choices": [
+      "コントレイル",
+      "グランアレグリア",
+      "サンレイポケット",
+      "ヒシイグアス"
+    ],
+    "answer": "コントレイル",
+    "eligibility": "2018年度以降に活躍 / GⅢ以上勝ち馬を母集団とする通常問題",
+    "answer_only": true
+  },
+  {
+    "id": "q012",
+    "type": "place_g1",
+    "typeLabel": "GⅠ / 3着",
+    "difficulty": 2,
+    "question": "2021年の天皇賞（秋）で3着だった馬は？",
+    "choices": [
+      "グランアレグリア",
+      "コントレイル",
+      "サンレイポケット",
+      "ポタジェ"
+    ],
+    "answer": "グランアレグリア",
+    "eligibility": "2018年度以降に活躍 / GⅢ以上勝ち馬を母集団とする通常問題",
+    "answer_only": true
+  },
+  {
+    "id": "q013",
+    "type": "place_g1",
+    "typeLabel": "GⅠ / 5着",
+    "difficulty": 2,
+    "question": "2021年の天皇賞（秋）で5着だった馬は？",
+    "choices": [
+      "ヒシイグアス",
+      "ポタジェ",
+      "ペルシアンナイト",
+      "ユーキャンスマイル"
+    ],
+    "answer": "ヒシイグアス",
+    "eligibility": "2018年度以降に活躍 / GⅢ以上勝ち馬を母集団とする通常問題",
+    "answer_only": true
+  },
+  {
+    "id": "q014",
+    "type": "place_g1",
+    "typeLabel": "GⅠ / 2着",
+    "difficulty": 2,
+    "question": "2020年のジャパンカップで2着だった馬は？",
+    "choices": [
+      "コントレイル",
+      "デアリングタクト",
+      "カレンブーケドール",
+      "グローリーヴェイズ"
+    ],
+    "answer": "コントレイル",
+    "eligibility": "2018年度以降に活躍 / GⅢ以上勝ち馬を母集団とする通常問題",
+    "answer_only": true
+  },
+  {
+    "id": "q015",
+    "type": "place_g1",
+    "typeLabel": "GⅠ / 3着",
+    "difficulty": 2,
+    "question": "2020年のジャパンカップで3着だった馬は？",
+    "choices": [
+      "デアリングタクト",
+      "カレンブーケドール",
+      "グローリーヴェイズ",
+      "コントレイル"
+    ],
+    "answer": "デアリングタクト",
+    "eligibility": "2018年度以降に活躍 / GⅢ以上勝ち馬を母集団とする通常問題",
+    "answer_only": true
+  },
+  {
+    "id": "q016",
+    "type": "place_g1",
+    "typeLabel": "GⅠ / 5着",
+    "difficulty": 2,
+    "question": "2019年のジャパンカップで5着だった馬は？",
+    "choices": [
+      "ユーキャンスマイル",
+      "マカヒキ",
+      "ワグネリアン",
+      "エタリオウ"
+    ],
+    "answer": "ユーキャンスマイル",
+    "eligibility": "2018年度以降に活躍 / GⅢ以上勝ち馬を母集団とする通常問題",
+    "answer_only": true
+  },
+  {
+    "id": "q017",
+    "type": "place_g1",
+    "typeLabel": "GⅠ / 2着",
+    "difficulty": 2,
+    "question": "2020年の菊花賞で2着だった馬は？",
+    "choices": [
+      "アリストテレス",
+      "サトノフラッグ",
+      "ディープボンド",
+      "ブラックホール"
+    ],
+    "answer": "アリストテレス",
+    "eligibility": "2018年度以降に活躍 / GⅢ以上勝ち馬を母集団とする通常問題",
+    "answer_only": true
+  },
+  {
+    "id": "q018",
+    "type": "place_g1",
+    "typeLabel": "GⅠ / 4着",
+    "difficulty": 2,
+    "question": "2020年の菊花賞で4着だった馬は？",
+    "choices": [
+      "ディープボンド",
+      "サトノフラッグ",
+      "ブラックホール",
+      "ロバートソンキー"
+    ],
+    "answer": "ディープボンド",
+    "eligibility": "2018年度以降に活躍 / GⅢ以上勝ち馬を母集団とする通常問題",
+    "answer_only": true
+  },
+  {
+    "id": "q019",
+    "type": "pedigree",
+    "typeLabel": "血統＋戦績",
+    "difficulty": 2,
+    "question": "父がディープインパクト。2023年の金鯱賞（GⅡ）を勝った馬は？",
+    "choices": [
+      "プログノーシス",
+      "プラダリア",
+      "アラタ",
+      "ディープモンスター"
+    ],
+    "answer": "プログノーシス",
+    "eligibility": "2018年度以降に活躍 / GⅢ以上勝ち馬を母集団とする通常問題",
+    "answer_only": true
+  },
+  {
+    "id": "q020",
+    "type": "pedigree",
+    "typeLabel": "血統＋戦績",
+    "difficulty": 2,
+    "question": "父がハーツクライ。2022年の毎日王冠（GⅡ）を勝った馬は？",
+    "choices": [
+      "サリオス",
+      "ジャスティンカフェ",
+      "ダノンザキッド",
+      "ポタジェ"
+    ],
+    "answer": "サリオス",
+    "eligibility": "2018年度以降に活躍 / GⅢ以上勝ち馬を母集団とする通常問題",
+    "answer_only": true
+  },
+  {
+    "id": "q021",
+    "type": "pedigree",
+    "typeLabel": "血統＋戦績",
+    "difficulty": 2,
+    "question": "父がキングマン。2021年の毎日王冠（GⅡ）を勝った馬は？",
+    "choices": [
+      "シュネルマイスター",
+      "ダノンキングリー",
+      "ポタジェ",
+      "カイザーミノル"
+    ],
+    "answer": "シュネルマイスター",
+    "eligibility": "2018年度以降に活躍 / GⅢ以上勝ち馬を母集団とする通常問題",
+    "answer_only": true
+  },
+  {
+    "id": "q022",
+    "type": "pedigree",
+    "typeLabel": "血統＋戦績",
+    "difficulty": 2,
+    "question": "父がエイシンフラッシュ。2022年の京都大賞典（GⅡ）を勝った馬は？",
+    "choices": [
+      "ヴェラアズール",
+      "ボッケリーニ",
+      "ディープボンド",
+      "マイネルウィルトス"
+    ],
+    "answer": "ヴェラアズール",
+    "eligibility": "2018年度以降に活躍 / GⅢ以上勝ち馬を母集団とする通常問題",
+    "answer_only": true
+  },
+  {
+    "id": "q023",
+    "type": "pedigree",
+    "typeLabel": "血統＋戦績",
+    "difficulty": 2,
+    "question": "父がディープインパクト。2023年の京都大賞典（GⅡ）を勝った馬は？",
+    "choices": [
+      "プラダリア",
+      "ボッケリーニ",
+      "ディープボンド",
+      "ヒンドゥタイムズ"
+    ],
+    "answer": "プラダリア",
+    "eligibility": "2018年度以降に活躍 / GⅢ以上勝ち馬を母集団とする通常問題",
+    "answer_only": true
+  },
+  {
+    "id": "q024",
+    "type": "pedigree",
+    "typeLabel": "血統＋戦績",
+    "difficulty": 2,
+    "question": "父がハーツクライ。2021年の府中牝馬ステークス（GⅡ）を勝った馬は？",
+    "choices": [
+      "シャドウディーヴァ",
+      "アンドラステ",
+      "ドナアトラエンテ",
+      "マルターズディオサ"
+    ],
+    "answer": "シャドウディーヴァ",
+    "eligibility": "2018年度以降に活躍 / GⅢ以上勝ち馬を母集団とする通常問題",
+    "answer_only": true
+  },
+  {
+    "id": "q025",
+    "type": "pedigree",
+    "typeLabel": "血統＋戦績",
+    "difficulty": 2,
+    "question": "父がキタサンブラック。2022年の天皇賞（秋）を勝った馬は？",
     "choices": [
       "イクイノックス",
       "パンサラッサ",
-      "ジャックドール",
-      "ダノンベルーガ"
+      "ダノンベルーガ",
+      "ジャックドール"
     ],
-    "answer": "イクイノックス"
+    "answer": "イクイノックス",
+    "eligibility": "2018年度以降に活躍 / GⅢ以上勝ち馬を母集団とする通常問題",
+    "answer_only": true
   },
   {
-    "id": "demo-q02",
-    "category": "日本ダービー",
-    "difficulty": "★★☆",
-    "question": "2022年の日本ダービーを制した馬は？",
+    "id": "q026",
+    "type": "pedigree",
+    "typeLabel": "血統＋戦績",
+    "difficulty": 2,
+    "question": "父がハーツクライ。2022年の日本ダービーを勝った馬は？",
     "choices": [
       "ドウデュース",
       "イクイノックス",
-      "ジオグリフ",
+      "アスクビクターモア",
       "ダノンベルーガ"
     ],
-    "answer": "ドウデュース"
+    "answer": "ドウデュース",
+    "eligibility": "2018年度以降に活躍 / GⅢ以上勝ち馬を母集団とする通常問題",
+    "answer_only": true
   },
   {
-    "id": "demo-q03",
-    "category": "牝馬三冠",
-    "difficulty": "★☆☆",
-    "question": "2020年に牝馬三冠を達成した馬は？",
+    "id": "q027",
+    "type": "pedigree",
+    "typeLabel": "血統＋戦績",
+    "difficulty": 2,
+    "question": "父がキズナ。2020年の菊花賞で4着だった馬は？",
+    "choices": [
+      "ディープボンド",
+      "アリストテレス",
+      "サトノフラッグ",
+      "ブラックホール"
+    ],
+    "answer": "ディープボンド",
+    "eligibility": "2018年度以降に活躍 / GⅢ以上勝ち馬を母集団とする通常問題",
+    "answer_only": true
+  },
+  {
+    "id": "q028",
+    "type": "pedigree",
+    "typeLabel": "血統＋戦績",
+    "difficulty": 2,
+    "question": "父がエピファネイア。2020年のジャパンカップで3着だった馬は？",
+    "choices": [
+      "デアリングタクト",
+      "コントレイル",
+      "カレンブーケドール",
+      "グローリーヴェイズ"
+    ],
+    "answer": "デアリングタクト",
+    "eligibility": "2018年度以降に活躍 / GⅢ以上勝ち馬を母集団とする通常問題",
+    "answer_only": true
+  },
+  {
+    "id": "q029",
+    "type": "pedigree",
+    "typeLabel": "血統＋戦績",
+    "difficulty": 2,
+    "question": "父がクロフネ。2020年のチューリップ賞（GⅡ）を勝った馬は？",
+    "choices": [
+      "マルターズディオサ",
+      "レシステンシア",
+      "クラヴァシュドール",
+      "ミヤマザクラ"
+    ],
+    "answer": "マルターズディオサ",
+    "eligibility": "2018年度以降に活躍 / GⅢ以上勝ち馬を母集団とする通常問題",
+    "answer_only": true
+  },
+  {
+    "id": "q030",
+    "type": "record",
+    "typeLabel": "特徴的な戦績",
+    "difficulty": 3,
+    "question": "GⅠで2着を4回記録した、菊花賞馬は？",
+    "choices": [
+      "キセキ",
+      "サリオス",
+      "カレンブーケドール",
+      "サンレイポケット"
+    ],
+    "answer": "キセキ",
+    "eligibility": "2018年度以降に活躍 / GⅢ以上勝ち馬を母集団とする通常問題",
+    "answer_only": true
+  },
+  {
+    "id": "q031",
+    "type": "record",
+    "typeLabel": "特徴的な戦績",
+    "difficulty": 3,
+    "question": "2019年のジャパンカップで2着、2020年のジャパンカップで4着だった馬は？",
+    "choices": [
+      "カレンブーケドール",
+      "グローリーヴェイズ",
+      "ワグネリアン",
+      "ユーキャンスマイル"
+    ],
+    "answer": "カレンブーケドール",
+    "eligibility": "2018年度以降に活躍 / GⅢ以上勝ち馬を母集団とする通常問題",
+    "answer_only": true
+  },
+  {
+    "id": "q032",
+    "type": "record",
+    "typeLabel": "特徴的な戦績",
+    "difficulty": 3,
+    "question": "2020年のジャパンカップで3着、同年の牝馬三冠を達成した馬は？",
     "choices": [
       "デアリングタクト",
       "グランアレグリア",
-      "レシステンシア",
-      "ソダシ"
+      "ソダシ",
+      "レシステンシア"
     ],
-    "answer": "デアリングタクト"
+    "answer": "デアリングタクト",
+    "eligibility": "2018年度以降に活躍 / GⅢ以上勝ち馬を母集団とする通常問題",
+    "answer_only": true
   },
   {
-    "id": "demo-q04",
-    "category": "有馬記念",
-    "difficulty": "★★☆",
-    "question": "2019年の有馬記念を制した馬は？",
+    "id": "q033",
+    "type": "record",
+    "typeLabel": "特徴的な戦績",
+    "difficulty": 3,
+    "question": "2022年の日本ダービーで2着、同年の天皇賞（秋）で3着だった馬は？",
     "choices": [
-      "リスグラシュー",
-      "アーモンドアイ",
-      "サートゥルナーリア",
-      "フィエールマン"
+      "イクイノックス",
+      "ダノンベルーガ",
+      "ジオグリフ",
+      "プラダリア"
     ],
-    "answer": "リスグラシュー"
+    "answer": "イクイノックス",
+    "eligibility": "2018年度以降に活躍 / GⅢ以上勝ち馬を母集団とする通常問題",
+    "answer_only": true
   },
   {
-    "id": "demo-q05",
-    "category": "クラシック三冠",
-    "difficulty": "★☆☆",
-    "question": "2020年に無敗でクラシック三冠を達成した馬は？",
+    "id": "q034",
+    "type": "record",
+    "typeLabel": "特徴的な戦績",
+    "difficulty": 3,
+    "question": "2021年の天皇賞（秋）で2着、2020年の菊花賞を勝っている馬は？",
     "choices": [
       "コントレイル",
-      "サリオス",
-      "デアリングタクト",
-      "アーモンドアイ"
+      "アリストテレス",
+      "ディープボンド",
+      "グランアレグリア"
     ],
-    "answer": "コントレイル"
+    "answer": "コントレイル",
+    "eligibility": "2018年度以降に活躍 / GⅢ以上勝ち馬を母集団とする通常問題",
+    "answer_only": true
+  },
+  {
+    "id": "q035",
+    "type": "record",
+    "typeLabel": "特徴的な戦績",
+    "difficulty": 3,
+    "question": "2022年の京都大賞典を勝ち、同年のジャパンカップにも出走した馬は？",
+    "choices": [
+      "ヴェラアズール",
+      "ボッケリーニ",
+      "ディープボンド",
+      "ヒンドゥタイムズ"
+    ],
+    "answer": "ヴェラアズール",
+    "eligibility": "2018年度以降に活躍 / GⅢ以上勝ち馬を母集団とする通常問題",
+    "answer_only": true
+  },
+  {
+    "id": "q036",
+    "type": "record",
+    "typeLabel": "特徴的な戦績",
+    "difficulty": 3,
+    "question": "2021年の毎日王冠を勝ち、その年の3歳馬としてマイル路線で活躍した馬は？",
+    "choices": [
+      "シュネルマイスター",
+      "サリオス",
+      "ダノンキングリー",
+      "ポタジェ"
+    ],
+    "answer": "シュネルマイスター",
+    "eligibility": "2018年度以降に活躍 / GⅢ以上勝ち馬を母集団とする通常問題",
+    "answer_only": true
+  },
+  {
+    "id": "q037",
+    "type": "profile",
+    "typeLabel": "馬のプロフィール",
+    "difficulty": 2,
+    "question": "2022年の日本ダービーで5着、同年の京都大賞典ではなく2023年の京都大賞典を勝った馬は？",
+    "choices": [
+      "プラダリア",
+      "アスクビクターモア",
+      "ダノンベルーガ",
+      "ヴェラアズール"
+    ],
+    "answer": "プラダリア",
+    "eligibility": "2018年度以降に活躍 / GⅢ以上勝ち馬を母集団とする通常問題",
+    "answer_only": true
+  },
+  {
+    "id": "q038",
+    "type": "profile",
+    "typeLabel": "馬のプロフィール",
+    "difficulty": 2,
+    "question": "2021年の天皇賞（秋）で3着、GⅠを6勝した牝馬は？",
+    "choices": [
+      "グランアレグリア",
+      "アーモンドアイ",
+      "クロノジェネシス",
+      "デアリングタクト"
+    ],
+    "answer": "グランアレグリア",
+    "eligibility": "2018年度以降に活躍 / GⅢ以上勝ち馬を母集団とする通常問題",
+    "answer_only": true
+  },
+  {
+    "id": "q039",
+    "type": "profile",
+    "typeLabel": "馬のプロフィール",
+    "difficulty": 2,
+    "question": "2022年の天皇賞（秋）で2着、同年の有馬記念にも出走した馬は？",
+    "choices": [
+      "パンサラッサ",
+      "ダノンベルーガ",
+      "ジャックドール",
+      "ジオグリフ"
+    ],
+    "answer": "パンサラッサ",
+    "eligibility": "2018年度以降に活躍 / GⅢ以上勝ち馬を母集団とする通常問題",
+    "answer_only": true
+  },
+  {
+    "id": "q040",
+    "type": "profile",
+    "typeLabel": "馬のプロフィール",
+    "difficulty": 2,
+    "question": "2023年の金鯱賞を勝ち、芝2000mを主戦場として活躍した馬は？",
+    "choices": [
+      "プログノーシス",
+      "フェーングロッテン",
+      "アラタ",
+      "ポタジェ"
+    ],
+    "answer": "プログノーシス",
+    "eligibility": "2018年度以降に活躍 / GⅢ以上勝ち馬を母集団とする通常問題",
+    "answer_only": true
   }
 ]

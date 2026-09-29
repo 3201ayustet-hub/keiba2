@@ -1,62 +1,41 @@
-# 競馬クイズ / GitHub Pages
+# 競馬クイズ v4
 
-ZIP直下のファイルだけで構成しています。GitHubリポジトリのルートへそのままアップロードできます。
+GitHub Pages用。ZIP直下がそのままリポジトリのルートになるフラット構成です。
 
-## ファイル
-- `index.html` アプリ画面
-- `style.css` 90年代競馬雑誌・スポーツ新聞風デザイン
-- `app.js` ゲームロジック
-- `questions.json` 通常問題DB
-- `final_races.json` FINAL問題DB
+## ゲーム
+- 通常問題：5問
+- FINAL：1問
+- 通常問題はDBからランダム5問
+- 通常問題とFINAL問題は独立
+- 正解1問につきFINALヒントが1枚OPEN
+- 不正解ではOPENしない
+- FINALの答えは1着馬名のみ
 
-## 1プレイ
-通常問題5問 → 正解するたびにヒントを開示 → FINALで1着馬を馬名入力。
-
-ヒント順:
+## FINALヒント
 1. タイム
 2. 4着・5着
 3. 3着
 4. 2着
-5. 競馬場
+5. 競馬場名だけ
 
-通常問題とFINAL問題は独立したDBなので、後から問題を追加しても固定セットにはなりません。
+FINAL画面は添付イメージを参考に、昔の競馬場着順掲示板を意識したオリジナルUI。
+レース名は表示しません。1着馬は最後まで伏せます。
 
-## 問題追加
-JSONに同じ形式のオブジェクトを追加してGitHubへpushするだけです。
+## 問題DB
+通常問題は40問。パターンを分散しています。
+- GⅡ/GⅢ勝ち馬
+- GⅠの2・3・4・5着
+- 血統＋戦績
+- 特徴的な戦績
+- 複数レースをまたぐ実績
+- 馬のプロフィール
 
-### 通常問題
-`questions.json`
-- id
-- category
-- difficulty
-- question
-- choices（4件）
-- answer
+GⅠ勝ち馬そのものを答えさせる通常問題は入れず、GⅠの1着馬当てはFINALに集約しています。
 
-### FINAL
-`final_races.json`
-- id
-- year
-- raceName
-- course
-- time
-- winner
-- finish2 / margin2
-- finish3 / margin3
-- finish4 / margin4
-- finish5 / margin5
+## FINAL DB
+2018年以降のGⅠを対象に10レースを収録。
+レース結果はJRAの公開結果をもとに登録したデータです。
+`source` は監査用メモで、アプリ画面には表示しません。
 
-FINALは2018年以降のGⅠのみを登録してください。
-
-## 注意
-今回のデモはゲーム性確認用の1セットです。公開用データを大量投入する前に、競走成績を一次情報で検証してください。
-
-
-## iPhoneホーム画面への追加
-GitHub Pagesで公開後、iPhoneのSafariでサイトを開き、
-「共有」→「ホーム画面に追加」でアプリとして追加できます。
-
-`icon-180.png` がiPhoneホーム画面向けのアイコン、`icon-512.png` は高解像度・PWA用です。
-`manifest.json` と `apple-touch-icon` の指定も `index.html` に組み込み済みです。
-
-※ アイコンは今回指定した90年代競馬雑誌風のデザインに合わせています。
+## iPhone
+GitHub Pages公開後、Safariの「共有 → ホーム画面に追加」でアプリとして起動できます。
