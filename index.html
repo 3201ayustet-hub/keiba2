@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>馬名クイズ</title><link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<main id="app">
+<header class="app-header"><div><p class="eyebrow">KEIBA QUIZ</p><h1>馬名クイズ</h1></div></header>
+
+<section id="screen-start" class="screen active">
+<div class="hero-card"><div class="horse-mark">🐎</div>
+<h2>5問正解して、GⅠを暴け。</h2>
+<p>通常クイズを5問。正解するたびに着順掲示板のヒントが1枚ずつ開きます。最後に隠された1着馬を当てよう。</p>
+<button id="startBtn" class="primary-button">ゲーム開始</button></div>
+<div class="info-grid"><div><strong>5</strong><span>通常問題</span></div><div><strong>5</strong><span>ヒント</span></div><div><strong>1</strong><span>FINAL</span></div></div>
+</section>
+
+<section id="screen-quiz" class="screen">
+<div class="status-row"><span id="progressLabel"></span><span id="scoreLabel"></span></div>
+<div class="progress-bar"><div id="progressFill"></div></div>
+<article class="question-card"><div class="question-meta"><span id="difficultyLabel"></span><span id="categoryLabel"></span></div>
+<h2 id="questionText"></h2><div id="choices" class="choices"></div><div id="feedback" class="feedback"></div></article>
+<aside class="hint-panel"><div class="hint-title">FINAL HINTS</div><div id="hintList" class="hint-list"></div></aside>
+</section>
+
+<section id="screen-final" class="screen">
+<div class="status-row"><span>FINAL QUIZ</span><span id="finalScoreLabel"></span></div>
+<div class="final-card"><p class="eyebrow">2018年以降・GⅠ</p><h2 id="finalRaceTitle"></h2>
+<div id="board" class="board"></div><p class="final-prompt">このレースの1着馬は？</p>
+<div class="answer-row"><input id="finalAnswer" placeholder="馬名を入力" autocomplete="off"><button id="finalSubmitBtn" class="primary-button">回答</button></div>
+<div id="finalFeedback" class="feedback"></div></div>
+</section>
+
+<section id="screen-result" class="screen">
+<div class="result-card"><p class="eyebrow">RESULT</p><h2 id="resultTitle"></h2><div id="resultScore" class="result-score"></div>
+<div id="resultStats" class="result-stats"></div><button id="againBtn" class="primary-button">もう一度遊ぶ</button></div>
+</section>
+</main>
+<script src="assets/app.js"></script>
+</body></html>
