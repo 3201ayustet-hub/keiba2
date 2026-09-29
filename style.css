@@ -141,6 +141,33 @@ button{cursor:pointer}
 .final-result{text-align:center;padding:13px 0;font:900 50px/1 Oswald,sans-serif;letter-spacing:.02em}
 .final-result.ok{color:var(--red)}
 .final-result.ng{color:var(--navy)}
+
+.result-screen-inner{
+  margin:auto;
+  width:100%;
+  text-align:center;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+.final-result-mark{
+  font:900 150px/.82 Oswald,sans-serif;
+  margin:24px 0 18px;
+  letter-spacing:.02em;
+}
+.final-result-mark.ok{color:var(--red)}
+.final-result-mark.ng{color:var(--navy)}
+.final-result-title{
+  margin:0;
+  font:900 clamp(34px,10vw,58px)/1 Oswald,sans-serif;
+  letter-spacing:.03em;
+}
+.final-result-copy{
+  margin:13px 0 30px;
+  font:700 12px Oswald,sans-serif;
+  letter-spacing:.14em;
+  color:var(--muted);
+}
 #restart-btn{align-self:center}
 
 @media(max-width:390px){

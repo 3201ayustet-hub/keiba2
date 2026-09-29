@@ -148,20 +148,29 @@ function renderFinal(){
   $('#final-answer').value='';
   $('#final-answer').disabled=false;
   $('#final-submit').disabled=false;
-  $('#final-result').hidden=true;
-  $('#restart-btn').hidden=true;
 }
 function submitFinal(){
   const a=norm($('#final-answer').value);
   if(!a||!currentFinal)return;
   const ok=a===norm(currentFinal.winner);
+
+  // FINAL answer -> dedicated result screen.
+  // Do not reveal the correct horse on an incorrect answer.
   $('#final-answer').disabled=true;
   $('#final-submit').disabled=true;
-  const r=$('#final-result');
-  r.hidden=false;
-  r.className='final-result '+(ok?'ok':'ng');
-  r.textContent=ok?'○  CONGRATULATIONS':'×  TRY AGAIN';
-  $('#restart-btn').hidden=false;
+
+  const mark=$('#final-result-mark');
+  const title=$('#final-result-title');
+  const copy=$('#final-result-copy');
+
+  mark.textContent=ok?'○':'×';
+  mark.className='final-result-mark '+(ok?'ok':'ng');
+  title.textContent=ok?'CONGRATULATIONS':'残念！';
+  copy.textContent=ok
+    ? 'FINAL QUESTION — CORRECT'
+    : 'FINAL QUESTION — INCORRECT';
+
+  show('final-result-screen');
 }
 async function loadData(){
   const [qr,fr]=await Promise.all([
