@@ -48,7 +48,7 @@ button{cursor:pointer}
 #search-input{flex:1;min-width:0}
 #year-filter{width:130px}
 
-.data-list{display:grid;gap:10px}
+.data-list{gap:10px}
 .data-card{background:rgba(244,235,213,.9);border:1px solid var(--line);padding:14px}
 .card-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
 .card-id{font:700 11px Oswald,sans-serif;letter-spacing:.08em;color:var(--red)}

@@ -170,7 +170,10 @@ function submitFinal(){
     ? 'FINAL QUESTION — CORRECT'
     : 'FINAL QUESTION — INCORRECT';
 
-  show('final-result-screen');
+  // Explicitly leave FINAL before showing the result screen.
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  const resultScreen = document.getElementById('final-result-screen');
+  if (resultScreen) resultScreen.classList.add('active');
 }
 async function loadData(){
   const [qr,fr]=await Promise.all([
@@ -198,9 +201,16 @@ $('#final-start-btn').addEventListener('click',()=>{
   try{renderFinal();show('final-screen')}
   catch(e){alert(e.message)}
 });
-$('#final-submit').addEventListener('click',submitFinal);
+$('#final-submit').addEventListener('click',(e)=>{
+  e.preventDefault();
+  submitFinal();
+});
 $('#final-answer').addEventListener('keydown',e=>{if(e.key==='Enter')submitFinal()});
-$('#restart-btn').addEventListener('click',()=>show('title-screen'));
+$('#restart-btn').addEventListener('click',()=>{
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  $('#title-screen').classList.add('active');
+  currentFinal=null;
+});
 
 loadData().catch(e=>{
   console.error(e);

@@ -74,27 +74,43 @@ function matches(text,q){
 }
 function renderList(){
   const query=$('#search-input').value.trim().toLowerCase();
+
+  const normalList=$('#normal-list');
+  const finalList=$('#final-list');
+  const yearFilter=$('#year-filter');
+
   if(activeTab==='normal'){
-    $('#year-filter').hidden=true;
-    $('#normal-list').hidden=false;
-    $('#final-list').hidden=true;
+    yearFilter.style.display='none';
+    normalList.style.display='grid';
+    finalList.style.display='none';
+
     const rows=questions.filter(q=>[
       q.id,q.category,q.question,q.answer,...(q.choices||[])
     ].some(v=>matches(v,query)));
-    $('#normal-list').innerHTML=rows.length?rows.map(normalCard).join(''):'<div class="empty">NO RESULTS</div>';
-  }else{
-    $('#year-filter').hidden=false;
-    $('#normal-list').hidden=true;
-    $('#final-list').hidden=false;
-    const year=$('#year-filter').value;
-    const rows=finals.filter(r=>
-      (!year||String(r.year)===year) &&
-      [r.id,r.year,r.date,r.race,r.venue,r.winner,r.second,r.third,r.fourth,r.fifth,r.time]
-        .some(v=>matches(Array.isArray(v)?v.join(' '):v,query))
-    );
-    $('#final-list').innerHTML=rows.length?rows.map(finalCard).join(''):'<div class="empty">NO RESULTS</div>';
+
+    normalList.innerHTML=rows.length
+      ? rows.map(normalCard).join('')
+      : '<div class="empty">NO RESULTS</div>';
+    return;
   }
+
+  // FINAL tab: explicitly expose the complete FINAL database.
+  yearFilter.style.display='block';
+  normalList.style.display='none';
+  finalList.style.display='grid';
+
+  const year=yearFilter.value;
+  const rows=finals.filter(r=>
+    (!year||String(r.year)===year) &&
+    [r.id,r.year,r.date,r.race,r.venue,r.winner,r.second,r.third,r.fourth,r.fifth,r.time]
+      .some(v=>matches(Array.isArray(v)?v.join(' '):v,query))
+  );
+
+  finalList.innerHTML=rows.length
+    ? rows.map(finalCard).join('')
+    : '<div class="empty">NO RESULTS</div>';
 }
+
 async function load(){
   const [q,f]=await Promise.all([
     fetch('questions.json',{cache:'no-store'}),
@@ -120,10 +136,16 @@ $('#login-form').addEventListener('submit',e=>{
     $('#admin-password').select();
   }
 });
-$('#logout-btn').addEventListener('click',()=>{setLoggedIn(false);showLogin()});
-$$('.tab').forEach(tab=>tab.addEventListener('click',()=>{
+$('#logout-btn').addEventListener('click',(e)=>{
+  e.preventDefault();
+  setLoggedIn(false);
+  showLogin();
+});
+$$('.tab').forEach(tab=>tab.addEventListener('click',(e)=>{
+  e.preventDefault();
   activeTab=tab.dataset.tab;
-  $$('.tab').forEach(t=>t.classList.toggle('active',t===tab));
+  $$('.tab').forEach(t=>t.classList.remove('active'));
+  tab.classList.add('active');
   renderList();
 }));
 $('#search-input').addEventListener('input',renderList);
