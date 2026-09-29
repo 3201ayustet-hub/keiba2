@@ -68,3 +68,11 @@ FINAL DBは現在の確定済み205レースを反映。
 - FINALタブ選択時はFINAL DBを明示的に表示
 - タブをbutton type=buttonとしてフォーム送信の影響を排除
 - 管理者ページのFINAL DB読み込み元は `final_races.json`
+
+## v5 修正
+- 通常問題中の「4着・5着」は獲得パネルとして1枚に統合
+- 獲得ストック表示も「4TH + 5TH」の1パネル
+- FINAL着順掲示板では4着と5着を従来どおり別行で表示
+- FINAL不正解時のみ「何年・何レース・正解馬」を結果画面に表示
+- FINAL正解時は従来どおりCongratulations表示
+- FINAL結果画面をscreen管理対象に含め、確実に表示可能に修正

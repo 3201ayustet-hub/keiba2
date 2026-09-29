@@ -185,3 +185,5 @@ button{cursor:pointer}
   .board-row{min-height:38px}
   .board-value{font-size:16px}
 }
+
+.stock-chip-wide{grid-column:span 2}

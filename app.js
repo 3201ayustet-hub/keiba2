@@ -1,7 +1,7 @@
 (()=>{
 const $=s=>document.querySelector(s);
 const $$=s=>document.querySelectorAll(s);
-const screens=['title-screen','quiz-screen','final-intro-screen','final-screen'];
+const screens=['title-screen','quiz-screen','final-intro-screen','final-screen','final-result-screen'];
 let questions=[], finals=[], quiz=[], qIndex=0, score=0, answered=false, currentFinal=null;
 
 const show=id=>screens.forEach(s=>$('#'+s).classList.toggle('active',s===id));
@@ -30,20 +30,16 @@ function valueText(v){return Array.isArray(v)?v.join(' ／ '):String(v??'—');}
 
 const panelMap=[
   {key:'time',label:'TIME',name:'TIME PANEL'},
-  {key:'fourth',label:'4TH',name:'4TH PANEL'},
-  {key:'fifth',label:'5TH',name:'5TH PANEL'},
+  {key:'fourth_fifth',label:'4TH + 5TH',name:'4TH + 5TH PANEL'},
   {key:'third',label:'3RD',name:'3RD PANEL'},
   {key:'second',label:'2ND',name:'2ND PANEL'},
   {key:'venue',label:'VENUE',name:'VENUE PANEL'}
 ];
 
 function earnedPanels(){
-  return panelMap.filter((_,i)=>{
-    if(i===0)return score>=1;
-    if(i===1||i===2)return score>=2;
-    return score>=i+1;
-  });
+  return panelMap.filter((_,i)=>score>=i+1);
 }
+
 function updateStock(){
   $$('.stock-chip').forEach(el=>{
     const key=el.dataset.panel;
@@ -103,7 +99,7 @@ function answerQuestion(choice,btn){
   if(correct){
     const gained=earnedPanels().filter(p=>{
       if(score===1)return p.key==='time';
-      if(score===2)return p.key==='fourth'||p.key==='fifth';
+      if(score===2)return p.key==='fourth_fifth';
       if(score===3)return p.key==='third';
       if(score===4)return p.key==='second';
       if(score===5)return p.key==='venue';
@@ -168,7 +164,7 @@ function submitFinal(){
   title.textContent=ok?'CONGRATULATIONS':'残念！';
   copy.textContent=ok
     ? 'FINAL QUESTION — CORRECT'
-    : 'FINAL QUESTION — INCORRECT';
+    : `${currentFinal.year}年 ${currentFinal.race} — 正解は「${currentFinal.winner}」`;
 
   // Explicitly leave FINAL before showing the result screen.
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
