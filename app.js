@@ -162,9 +162,7 @@ function submitFinal(){
   mark.textContent=ok?'○':'×';
   mark.className='final-result-mark '+(ok?'ok':'ng');
   title.textContent=ok?'CONGRATULATIONS':'残念！';
-  copy.textContent=ok
-    ? 'FINAL QUESTION — CORRECT'
-    : `${currentFinal.year}年 ${currentFinal.race} — 正解は「${currentFinal.winner}」`;
+  copy.textContent=`${currentFinal.year}年 ${currentFinal.race} — 正解は「${currentFinal.winner}」`;
 
   // Explicitly leave FINAL before showing the result screen.
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
