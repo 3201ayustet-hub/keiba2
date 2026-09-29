@@ -92,7 +92,7 @@
   },
   {
     "id": "q008",
-    "category": "characteristic",
+    "category": "overseas",
     "difficulty": "hard",
     "question": "凱旋門賞に出走した経験がある馬は？",
     "choices": [
@@ -105,9 +105,9 @@
   },
   {
     "id": "q009",
-    "category": "characteristic",
+    "category": "longevity",
     "difficulty": "hard",
-    "question": "10歳まで現役を続け、重賞にも出走した馬は？",
+    "question": "10歳まで現役を続けた馬は？",
     "choices": [
       "オジュウチョウサン",
       "フィエールマン",
@@ -118,71 +118,19 @@
   },
   {
     "id": "q010",
-    "category": "record_pattern",
-    "difficulty": "hard",
-    "question": "同じ重賞で複数回馬券内に入った経験を持つ馬は？",
-    "choices": [
-      "サリオス",
-      "ディープボンド",
-      "グランアレグリア",
-      "コントレイル"
-    ],
-    "answer": "ディープボンド"
-  },
-  {
-    "id": "q011",
     "category": "distance_range",
     "difficulty": "hard",
     "question": "1200mと2400mの両方で勝ち鞍がある馬は？",
     "choices": [
       "キタサンブラック",
+      "リスグラシュー",
       "クロノジェネシス",
-      "リスグラシュー",
       "レイパパレ"
     ],
     "answer": "リスグラシュー"
   },
   {
-    "id": "q012",
-    "category": "jockey_pattern",
-    "difficulty": "hard",
-    "question": "GⅠに複数回出走し、そのすべてで異なる騎手が騎乗した馬は？",
-    "choices": [
-      "ラッキーライラック",
-      "グローリーヴェイズ",
-      "ブラストワンピース",
-      "カレンブーケドール"
-    ],
-    "answer": "カレンブーケドール"
-  },
-  {
-    "id": "q013",
-    "category": "prize_money",
-    "difficulty": "hard",
-    "question": "GⅠ未勝利ながら、GⅠで複数回の2着を記録した馬は？",
-    "choices": [
-      "ディープボンド",
-      "イクイノックス",
-      "コントレイル",
-      "エフフォーリア"
-    ],
-    "answer": "ディープボンド"
-  },
-  {
-    "id": "q014",
-    "category": "overseas",
-    "difficulty": "hard",
-    "question": "海外GⅠに出走し、日本国内でもGⅠを勝った馬は？",
-    "choices": [
-      "グランアレグリア",
-      "リスグラシュー",
-      "コントレイル",
-      "レイパパレ"
-    ],
-    "answer": "リスグラシュー"
-  },
-  {
-    "id": "q015",
+    "id": "q011",
     "category": "jockey_never",
     "difficulty": "hard",
     "question": "クリストフ・ルメール騎手が騎乗したことのない馬は？",
@@ -195,7 +143,7 @@
     "answer": "コントレイル"
   },
   {
-    "id": "q016",
+    "id": "q012",
     "category": "g3_win",
     "difficulty": "medium",
     "question": "2022年のシルクロードステークス（GⅢ）を勝った馬は？",
@@ -208,7 +156,7 @@
     "answer": "メイケイエール"
   },
   {
-    "id": "q017",
+    "id": "q013",
     "category": "g2_win",
     "difficulty": "medium",
     "question": "2022年の阪神大賞典（GⅡ）を勝った馬は？",
@@ -221,7 +169,7 @@
     "answer": "ディープボンド"
   },
   {
-    "id": "q018",
+    "id": "q014",
     "category": "g2_win",
     "difficulty": "medium",
     "question": "2021年の札幌記念（GⅡ）を勝った馬は？",
@@ -234,7 +182,7 @@
     "answer": "ソダシ"
   },
   {
-    "id": "q019",
+    "id": "q015",
     "category": "jockey_race",
     "difficulty": "medium",
     "question": "2021年の天皇賞（秋）で横山武史騎手が騎乗していた馬は？",
@@ -247,8 +195,164 @@
     "answer": "エフフォーリア"
   },
   {
+    "id": "q016",
+    "category": "g3_win",
+    "difficulty": "medium",
+    "question": "2021年の京阪杯（GⅢ）を勝った馬は？",
+    "choices": [
+      "タイセイビジョン",
+      "ファストフォース",
+      "シヴァージ",
+      "エイティーンガール"
+    ],
+    "answer": "エイティーンガール"
+  },
+  {
+    "id": "q017",
+    "category": "g3_win",
+    "difficulty": "medium",
+    "question": "2020年のマイルチャンピオンシップ南部杯（JpnⅠ）を勝った馬は？",
+    "choices": [
+      "アルクトス",
+      "モズアスコット",
+      "オメガパフューム",
+      "サンライズノヴァ"
+    ],
+    "answer": "アルクトス"
+  },
+  {
+    "id": "q018",
+    "category": "g2_win",
+    "difficulty": "medium",
+    "question": "2020年のフィリーズレビュー（GⅡ）を勝った馬は？",
+    "choices": [
+      "ヤマカツマーメイド",
+      "エーポス",
+      "ナイントゥファイブ",
+      "カリオストロ"
+    ],
+    "answer": "エーポス"
+  },
+  {
+    "id": "q019",
+    "category": "g3_win",
+    "difficulty": "medium",
+    "question": "2022年の函館スプリントステークス（GⅢ）を勝った馬は？",
+    "choices": [
+      "ジュビリーヘッド",
+      "タイセイアベニール",
+      "ナムラクレア",
+      "ビアンフェ"
+    ],
+    "answer": "ナムラクレア"
+  },
+  {
     "id": "q020",
+    "category": "g2_win",
+    "difficulty": "medium",
+    "question": "2022年のセントウルステークス（GⅡ）を勝った馬は？",
+    "choices": [
+      "ファストフォース",
+      "サンライズオネスト",
+      "ジャングロ",
+      "メイケイエール"
+    ],
+    "answer": "メイケイエール"
+  },
+  {
+    "id": "q021",
+    "category": "pedigree",
+    "difficulty": "medium",
+    "question": "父キズナで、2021年の大阪杯を勝った馬は？",
+    "choices": [
+      "レイパパレ",
+      "モズベッロ",
+      "コントレイル",
+      "グランアレグリア"
+    ],
+    "answer": "レイパパレ"
+  },
+  {
+    "id": "q022",
+    "category": "pedigree",
+    "difficulty": "medium",
+    "question": "父ディープインパクトで、2020年のヴィクトリアマイルを勝った馬は？",
+    "choices": [
+      "ラヴズオンリーユー",
+      "アーモンドアイ",
+      "グランアレグリア",
+      "ノームコア"
+    ],
+    "answer": "アーモンドアイ"
+  },
+  {
+    "id": "q023",
+    "category": "pedigree",
+    "difficulty": "medium",
+    "question": "父ドゥラメンテで、2022年の皐月賞を勝った馬は？",
+    "choices": [
+      "イクイノックス",
+      "ダノンベルーガ",
+      "ジオグリフ",
+      "ドウデュース"
+    ],
+    "answer": "ジオグリフ"
+  },
+  {
+    "id": "q024",
     "category": "record_pattern",
+    "difficulty": "hard",
+    "question": "同じ重賞で複数回馬券内に入った経験がある馬は？",
+    "choices": [
+      "コントレイル",
+      "レイパパレ",
+      "サリオス",
+      "ディープボンド"
+    ],
+    "answer": "ディープボンド"
+  },
+  {
+    "id": "q025",
+    "category": "g1_record",
+    "difficulty": "hard",
+    "question": "GⅠ未勝利ながら、GⅠで複数回2着に入った馬は？",
+    "choices": [
+      "ディープボンド",
+      "イクイノックス",
+      "エフフォーリア",
+      "コントレイル"
+    ],
+    "answer": "ディープボンド"
+  },
+  {
+    "id": "q026",
+    "category": "overseas",
+    "difficulty": "hard",
+    "question": "海外GⅠを勝ち、日本国内でもGⅠを勝った馬は？",
+    "choices": [
+      "グランアレグリア",
+      "リスグラシュー",
+      "レイパパレ",
+      "ソダシ"
+    ],
+    "answer": "リスグラシュー"
+  },
+  {
+    "id": "q027",
+    "category": "surface",
+    "difficulty": "hard",
+    "question": "芝とダートの両方で重賞を勝った馬は？",
+    "choices": [
+      "コントレイル",
+      "グランアレグリア",
+      "モズアスコット",
+      "フィエールマン"
+    ],
+    "answer": "モズアスコット"
+  },
+  {
+    "id": "q028",
+    "category": "g1_record",
     "difficulty": "hard",
     "question": "同じGⅠで2回以上馬券内に入った経験がある馬は？",
     "choices": [
@@ -260,48 +364,289 @@
     "answer": "ディープボンド"
   },
   {
-    "id": "p001",
-    "category": "characteristic_candidate",
+    "id": "q029",
+    "category": "jockey_pattern",
     "difficulty": "hard",
-    "question": "凱旋門賞に挑戦した経験がある馬は？",
-    "pattern": "overseas_arc_attempt",
-    "verification_status": "verified_for_current_choices",
+    "question": "GⅠに複数回出走し、異なる騎手で出走した馬は？",
     "choices": [
-      "タイトルホルダー",
-      "グランアレグリア",
-      "ダノンスマッシュ",
-      "インディチャンプ"
+      "カレンブーケドール",
+      "ラッキーライラック",
+      "グローリーヴェイズ",
+      "ブラストワンピース"
     ],
-    "answer": "タイトルホルダー"
+    "answer": "カレンブーケドール"
   },
   {
-    "id": "p002",
-    "category": "characteristic_candidate",
+    "id": "q030",
+    "category": "course",
     "difficulty": "hard",
-    "question": "10歳まで現役だった馬は？",
-    "pattern": "longevity_10yo",
-    "verification_status": "verified_for_current_choices",
+    "question": "東京競馬場と中山競馬場の両方でGⅠを勝った馬は？",
     "choices": [
-      "コントレイル",
-      "オジュウチョウサン",
+      "クロノジェネシス",
       "アーモンドアイ",
-      "フィエールマン"
+      "リスグラシュー",
+      "グランアレグリア"
     ],
-    "answer": "オジュウチョウサン"
+    "answer": "アーモンドアイ"
   },
   {
-    "id": "p003",
-    "category": "characteristic_candidate",
+    "id": "q031",
+    "category": "distance",
     "difficulty": "hard",
-    "question": "芝とダートの両方で重賞勝ちがある馬は？",
-    "pattern": "surface_dual_winner",
-    "verification_status": "verified_for_current_choices",
+    "question": "1600mと2000mの両方でGⅠを勝った馬は？",
     "choices": [
       "コントレイル",
+      "エフフォーリア",
       "グランアレグリア",
-      "モズアスコット",
-      "フィエールマン"
+      "レイパパレ"
+    ],
+    "answer": "グランアレグリア"
+  },
+  {
+    "id": "q032",
+    "category": "career",
+    "difficulty": "hard",
+    "question": "3歳と古馬の両方でGⅠを勝った馬は？",
+    "choices": [
+      "イクイノックス",
+      "グランアレグリア",
+      "エフフォーリア",
+      "コントレイル"
+    ],
+    "answer": "コントレイル"
+  },
+  {
+    "id": "q033",
+    "category": "jockey_race",
+    "difficulty": "medium",
+    "question": "2020年のジャパンカップで福永祐一騎手が騎乗していた馬は？",
+    "choices": [
+      "コントレイル",
+      "アーモンドアイ",
+      "デアリングタクト",
+      "カレンブーケドール"
+    ],
+    "answer": "コントレイル"
+  },
+  {
+    "id": "q034",
+    "category": "jockey_race",
+    "difficulty": "medium",
+    "question": "2021年のオークスで川田将雅騎手が騎乗していた馬は？",
+    "choices": [
+      "ユーバーレーベン",
+      "ファインルージュ",
+      "アカイトリノムスメ",
+      "クールキャット"
+    ],
+    "answer": "ファインルージュ"
+  },
+  {
+    "id": "q035",
+    "category": "jockey_race",
+    "difficulty": "medium",
+    "question": "2022年の日本ダービーで武豊騎手が騎乗していた馬は？",
+    "choices": [
+      "イクイノックス",
+      "アスクビクターモア",
+      "ドウデュース",
+      "ダノンベルーガ"
+    ],
+    "answer": "ドウデュース"
+  },
+  {
+    "id": "q036",
+    "category": "overseas",
+    "difficulty": "hard",
+    "question": "香港遠征を経験した馬は？",
+    "choices": [
+      "コントレイル",
+      "エフフォーリア",
+      "レイパパレ",
+      "ラヴズオンリーユー"
+    ],
+    "answer": "ラヴズオンリーユー"
+  },
+  {
+    "id": "q037",
+    "category": "overseas",
+    "difficulty": "hard",
+    "question": "ドバイ遠征でGⅠを勝った馬は？",
+    "choices": [
+      "パンサラッサ",
+      "アーモンドアイ",
+      "リスグラシュー",
+      "クロノジェネシス"
+    ],
+    "answer": "パンサラッサ"
+  },
+  {
+    "id": "q038",
+    "category": "career",
+    "difficulty": "hard",
+    "question": "6歳以上でGⅠを勝った馬は？",
+    "choices": [
+      "コントレイル",
+      "カンパニー",
+      "アーモンドアイ",
+      "デアリングタクト"
+    ],
+    "answer": "カンパニー"
+  },
+  {
+    "id": "q039",
+    "category": "distance_range",
+    "difficulty": "hard",
+    "question": "1200mと1600mの両方でGⅠを勝った馬は？",
+    "choices": [
+      "ロードカナロア",
+      "モーリス",
+      "グランアレグリア",
+      "アーモンドアイ"
+    ],
+    "answer": "グランアレグリア"
+  },
+  {
+    "id": "q040",
+    "category": "record_pattern",
+    "difficulty": "hard",
+    "question": "同じGⅡを複数回勝った馬は？",
+    "choices": [
+      "サリオス",
+      "エフフォーリア",
+      "レイパパレ",
+      "ディープボンド"
+    ],
+    "answer": "ディープボンド"
+  },
+  {
+    "id": "q041",
+    "category": "pedigree",
+    "difficulty": "medium",
+    "question": "父ハーツクライで、GⅠを勝った馬は？",
+    "choices": [
+      "リスグラシュー",
+      "コントレイル",
+      "ソダシ",
+      "レイパパレ"
+    ],
+    "answer": "リスグラシュー"
+  },
+  {
+    "id": "q042",
+    "category": "pedigree",
+    "difficulty": "medium",
+    "question": "父オルフェーヴルで、GⅠを勝った馬は？",
+    "choices": [
+      "イクイノックス",
+      "エポカドーロ",
+      "エフフォーリア",
+      "アカイトリノムスメ"
+    ],
+    "answer": "エポカドーロ"
+  },
+  {
+    "id": "q043",
+    "category": "g2_win",
+    "difficulty": "medium",
+    "question": "2022年の京都大賞典（GⅡ）を勝った馬は？",
+    "choices": [
+      "ボッケリーニ",
+      "ウインマイティー",
+      "ヴェラアズール",
+      "アイアンバローズ"
+    ],
+    "answer": "ヴェラアズール"
+  },
+  {
+    "id": "q044",
+    "category": "g2_win",
+    "difficulty": "medium",
+    "question": "2021年の金鯱賞（GⅡ）を勝った馬は？",
+    "choices": [
+      "デアリングタクト",
+      "ポタジェ",
+      "グローリーヴェイズ",
+      "ギベオン"
+    ],
+    "answer": "ギベオン"
+  },
+  {
+    "id": "q045",
+    "category": "g3_win",
+    "difficulty": "medium",
+    "question": "2022年の小倉記念（GⅢ）を勝った馬は？",
+    "choices": [
+      "マリアエレーナ",
+      "ジェラルディーナ",
+      "カテドラル",
+      "ピースオブエイト"
+    ],
+    "answer": "マリアエレーナ"
+  },
+  {
+    "id": "q046",
+    "category": "g3_win",
+    "difficulty": "medium",
+    "question": "2021年のエルムステークス（GⅢ）を勝った馬は？",
+    "choices": [
+      "オメガレインボー",
+      "スワーヴアラミス",
+      "ロードブレス",
+      "ウェスタールンド"
+    ],
+    "answer": "スワーヴアラミス"
+  },
+  {
+    "id": "q047",
+    "category": "record_pattern",
+    "difficulty": "hard",
+    "question": "GⅠで1着・2着・3着をすべて経験した馬は？",
+    "choices": [
+      "コントレイル",
+      "イクイノックス",
+      "キセキ",
+      "エフフォーリア"
+    ],
+    "answer": "キセキ"
+  },
+  {
+    "id": "q048",
+    "category": "characteristic",
+    "difficulty": "hard",
+    "question": "芝からダートへ転向してGⅠを勝った馬は？",
+    "choices": [
+      "パンサラッサ",
+      "カフェファラオ",
+      "オメガパフューム",
+      "モズアスコット"
     ],
     "answer": "モズアスコット"
+  },
+  {
+    "id": "q049",
+    "category": "career",
+    "difficulty": "hard",
+    "question": "3歳から6歳まで重賞に出走した馬は？",
+    "choices": [
+      "キセキ",
+      "コントレイル",
+      "アーモンドアイ",
+      "デアリングタクト"
+    ],
+    "answer": "キセキ"
+  },
+  {
+    "id": "q050",
+    "category": "jockey_pattern",
+    "difficulty": "hard",
+    "question": "複数のGⅠで異なる騎手が騎乗した馬は？",
+    "choices": [
+      "アーモンドアイ",
+      "カレンブーケドール",
+      "コントレイル",
+      "イクイノックス"
+    ],
+    "answer": "カレンブーケドール"
   }
 ]
