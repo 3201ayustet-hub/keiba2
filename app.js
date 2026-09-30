@@ -136,7 +136,7 @@ function renderFinal(){
   const venueValue=esc(valueText(currentFinal.venue));
   const rows=[
     ['VENUE',venueValue,5,'venue-row',''],
-    ['1ST',openCount>=5?esc(winnerInitial):'',6,'','first-hint'],
+    ['1ST',openCount>=5?esc(winnerInitial):'',5,'','first-hint'],
     ['2ND',currentFinal.second,4,'',''],
     ['3RD',currentFinal.third,3,'',''],
     ['4TH',currentFinal.fourth,2,'',''],
@@ -178,21 +178,48 @@ function submitFinal(){
   const resultScreen = document.getElementById('final-result-screen');
   if (resultScreen) resultScreen.classList.add('active');
 }
+async function loadSupabaseQuestions(){
+  const cfg=window.KEIBA_QUIZ_SUPABASE;
+  if(!cfg?.url||!cfg?.key)throw new Error('Supabase設定がありません。');
+  const res=await fetch(`${cfg.url}/quiz_questions?select=*&active=eq.true&order=id.asc`,{
+    headers:{apikey:cfg.key,Authorization:`Bearer ${cfg.key}`},
+    cache:'no-store'
+  });
+  if(!res.ok)throw new Error(`Supabase通常問題の取得に失敗しました (${res.status})`);
+  const rows=await res.json();
+  return rows.map(r=>({
+    id:String(r.id),
+    question:r.question,
+    choices:[r.option1,r.option2,r.option3,r.option4],
+    answer:[r.option1,r.option2,r.option3,r.option4][Number(r.correct_option)-1],
+    explanation:r.explanation||'',
+    category:'RACE QUIZ'
+  })).filter(validateQuestion);
+}
+
 async function loadData(){
-  const [qr,fr]=await Promise.all([
-    fetch('questions.json',{cache:'no-store'}),
-    fetch('final_races.json',{cache:'no-store'})
+  const [fr, localQr]=await Promise.all([
+    fetch('final_races.json',{cache:'no-store'}),
+    fetch('questions.json',{cache:'no-store'})
   ]);
-  if(!qr.ok||!fr.ok)throw new Error('問題DBを読み込めませんでした。');
-  questions=await qr.json();
+  if(!fr.ok)throw new Error('FINAL問題DBを読み込めませんでした。');
   finals=await fr.json();
-  questions=Array.isArray(questions)?questions:(questions.questions||[]);
   finals=Array.isArray(finals)?finals:(finals.races||finals.finalRaces||[]);
-  questions=questions.filter(validateQuestion).map(q=>({...q,category:q.category||'RACE QUIZ'}));
   finals=finals.filter(validateFinal);
+
+  try{
+    questions=await loadSupabaseQuestions();
+    console.info(`Loaded ${questions.length} normal questions from Supabase / ${finals.length} final races`);
+  }catch(e){
+    console.warn(e);
+    if(!localQr.ok)throw new Error('通常問題をSupabaseからもローカルDBからも読み込めませんでした。');
+    questions=await localQr.json();
+    questions=Array.isArray(questions)?questions:(questions.questions||[]);
+    questions=questions.filter(validateQuestion).map(q=>({...q,category:q.category||'RACE QUIZ'}));
+    console.warn(`Supabase unavailable; using local questions.json (${questions.length} questions)`);
+  }
   if(questions.length<5)throw new Error('通常問題が5問未満です。');
   if(!finals.length)throw new Error('FINAL問題がありません。');
-  console.info(`Loaded ${questions.length} normal questions / ${finals.length} final races`);
 }
 
 $('#start-btn').addEventListener('click',()=>{

@@ -2,11 +2,12 @@
 const $=s=>document.querySelector(s);
 const $$=s=>document.querySelectorAll(s);
 const PASSWORD='4649';
-let questions=[], finals=[], activeTab='normal';
+const cfg=()=>window.KEIBA_QUIZ_SUPABASE;
+let questions=[], finals=[], activeTab='normal', editingId=null;
 
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const valueText=v=>Array.isArray(v)?v.join(' ／ '):String(v??'—');
-
+const headers=()=>({apikey:cfg().key,Authorization:`Bearer ${cfg().key}`,'Content-Type':'application/json'});
 function isLoggedIn(){return sessionStorage.getItem('keiba_admin_auth')==='1'}
 function setLoggedIn(v){if(v)sessionStorage.setItem('keiba_admin_auth','1');else sessionStorage.removeItem('keiba_admin_auth')}
 
@@ -25,23 +26,27 @@ function renderSummary(){
   $('#db-summary').innerHTML=`
     <div class="summary-card"><b>${questions.length}</b><span>通常問題</span></div>
     <div class="summary-card"><b>${finals.length}</b><span>FINAL DB</span></div>
-    <div class="summary-card"><b>${finals.filter(r=>r.verification?.top5==='pending_individual_jra_check').length}</b><span>着順・タイム要照合</span></div>
+    <div class="summary-card"><b>${questions.filter(q=>q.active!==false).length}</b><span>出題中</span></div>
   `;
 }
 function normalCard(q){
-  const choices=(q.choices||[]).map(c=>{
+  const choices=(q.choices||[]).map((c,i)=>{
     const ans=String(c).trim()===String(q.answer).trim();
-    return `<div class="choice-item ${ans?'answer':''}">${esc(c)}</div>`;
+    return `<div class="choice-item ${ans?'answer':''}"><b>${i+1}.</b> ${esc(c)}</div>`;
   }).join('');
   return `<article class="data-card">
     <div class="card-head">
-      <div class="card-id">${esc(q.id||'NO ID')}</div>
-      <div class="card-meta">${esc(q.category||'')} ${esc(q.difficulty||'')}</div>
+      <div class="card-id">#${esc(q.id||'NO ID')}</div>
+      <div class="card-meta">${q.active===false?'停止中':'出題中'}</div>
     </div>
     <div class="card-question">${esc(q.question)}</div>
     <div class="choice-grid">${choices}</div>
     <div class="answer-tag">ANSWER: ${esc(q.answer)}</div>
-    ${q.factCheck?`<div class="fact-status">${esc(q.factCheck)}</div>`:''}
+    <div class="explanation">${esc(q.explanation||'')}</div>
+    <div class="card-actions">
+      <button type="button" class="small-btn edit-question" data-id="${esc(q.id)}">編集</button>
+      <button type="button" class="small-btn danger delete-question" data-id="${esc(q.id)}">削除</button>
+    </div>
   </article>`;
 }
 function finalCard(r){
@@ -68,94 +73,86 @@ function finalCard(r){
     </div>
   </article>`;
 }
-function matches(text,q){
-  const t=String(text||'').toLowerCase();
-  return t.includes(q);
-}
+function matches(text,q){return String(text||'').toLowerCase().includes(q)}
 function renderList(){
   const query=$('#search-input').value.trim().toLowerCase();
-
-  const normalList=$('#normal-list');
-  const finalList=$('#final-list');
-  const yearFilter=$('#year-filter');
-
+  const normalList=$('#normal-list'), finalList=$('#final-list'), yearFilter=$('#year-filter');
   if(activeTab==='normal'){
-    yearFilter.style.display='none';
-    normalList.style.display='grid';
-    finalList.style.display='none';
-
-    const rows=questions.filter(q=>[
-      q.id,q.category,q.question,q.answer,...(q.choices||[])
-    ].some(v=>matches(v,query)));
-
-    normalList.innerHTML=rows.length
-      ? rows.map(normalCard).join('')
-      : '<div class="empty">NO RESULTS</div>';
+    yearFilter.hidden=true; normalList.hidden=false; finalList.hidden=true;
+    const rows=questions.filter(q=>[q.id,q.question,q.answer,q.explanation,...(q.choices||[])].some(v=>matches(v,query)));
+    normalList.innerHTML=rows.length?rows.map(normalCard).join(''):'<div class="empty">NO RESULTS</div>';
+    $$('.edit-question').forEach(b=>b.addEventListener('click',()=>openEditor(b.dataset.id)));
+    $$('.delete-question').forEach(b=>b.addEventListener('click',()=>deleteQuestion(b.dataset.id)));
     return;
   }
-
-  // FINAL tab: explicitly expose the complete FINAL database.
-  yearFilter.style.display='block';
-  normalList.style.display='none';
-  finalList.style.display='grid';
-
+  yearFilter.hidden=false; normalList.hidden=true; finalList.hidden=false;
   const year=yearFilter.value;
-  const rows=finals.filter(r=>
-    (!year||String(r.year)===year) &&
-    [r.id,r.year,r.date,r.race,r.venue,r.winner,r.second,r.third,r.fourth,r.fifth,r.time]
-      .some(v=>matches(Array.isArray(v)?v.join(' '):v,query))
-  );
-
-  finalList.innerHTML=rows.length
-    ? rows.map(finalCard).join('')
-    : '<div class="empty">NO RESULTS</div>';
+  const rows=finals.filter(r=>(!year||String(r.year)===year)&&[r.id,r.year,r.date,r.race,r.venue,r.winner,r.second,r.third,r.fourth,r.fifth,r.time].some(v=>matches(Array.isArray(v)?v.join(' '):v,query)));
+  finalList.innerHTML=rows.length?rows.map(finalCard).join(''):'<div class="empty">NO RESULTS</div>';
 }
-
+async function loadQuestionsFromSupabase(){
+  const c=cfg();
+  if(!c?.url||!c?.key)throw new Error('Supabase設定がありません。');
+  const res=await fetch(`${c.url}/quiz_questions?select=*&order=id.asc`,{headers:headers(),cache:'no-store'});
+  if(!res.ok)throw new Error(`通常問題の取得に失敗しました (${res.status})`);
+  return res.json();
+}
 async function load(){
-  const [q,f]=await Promise.all([
-    fetch('questions.json',{cache:'no-store'}),
-    fetch('final_races.json',{cache:'no-store'})
-  ]);
-  if(!q.ok||!f.ok)throw new Error('DATABASE LOAD ERROR');
-  questions=await q.json();
-  finals=await f.json();
-  if(!Array.isArray(questions))questions=questions.questions||[];
-  if(!Array.isArray(finals))finals=finals.races||[];
+  const f=await fetch('final_races.json',{cache:'no-store'});
+  if(!f.ok)throw new Error('FINAL DATABASE LOAD ERROR');
+  finals=await f.json(); if(!Array.isArray(finals))finals=finals.races||[];
+  questions=await loadQuestionsFromSupabase();
   const years=[...new Set(finals.map(r=>r.year).filter(Boolean))].sort((a,b)=>b-a);
   $('#year-filter').innerHTML='<option value="">全年度</option>'+years.map(y=>`<option value="${esc(y)}">${esc(y)}年</option>`).join('');
 }
+function openEditor(id){
+  editingId=id?String(id):null;
+  const q=editingId?questions.find(x=>String(x.id)===editingId):null;
+  $('#editor-title').textContent=q?'通常問題を編集':'通常問題を追加';
+  $('#question-id').textContent=q?`ID: ${q.id}`:'NEW';
+  $('#q-question').value=q?.question||'';
+  [1,2,3,4].forEach(i=>$('#q-option'+i).value=q?.['option'+i]??q?.choices?.[i-1]??'');
+  const answerIndex=q?((q.choices||[]).findIndex(v=>String(v).trim()===String(q.answer).trim())+1):1;
+  $('#q-correct').value=String(answerIndex>0?answerIndex:1);
+  $('#q-explanation').value=q?.explanation||'';
+  $('#editor').hidden=false;
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function closeEditor(){editingId=null;$('#editor').hidden=true}
+async function saveQuestion(e){
+  e.preventDefault();
+  const options=[1,2,3,4].map(i=>$('#q-option'+i).value.trim());
+  const payload={question:$('#q-question').value.trim(),option1:options[0],option2:options[1],option3:options[2],option4:options[3],correct_option:Number($('#q-correct').value),explanation:$('#q-explanation').value.trim(),active:true};
+  if(!payload.question||options.some(v=>!v)||!payload.explanation){alert('問題文・4択・解説をすべて入力してください。');return}
+  const c=cfg();
+  const url=editingId?`${c.url}/quiz_questions?id=eq.${encodeURIComponent(editingId)}`:`${c.url}/quiz_questions`;
+  const res=await fetch(url,{method:editingId?'PATCH':'POST',headers:{...headers(),Prefer:'return=representation'},body:JSON.stringify(payload)});
+  if(!res.ok){alert(`保存に失敗しました (${res.status})`);return}
+  closeEditor();
+  questions=await loadQuestionsFromSupabase();
+  renderSummary();renderList();
+}
+async function deleteQuestion(id){
+  const q=questions.find(x=>String(x.id)===String(id));
+  if(!q||!confirm(`この問題を削除しますか？\n\n${q.question}`))return;
+  const c=cfg();
+  const res=await fetch(`${c.url}/quiz_questions?id=eq.${encodeURIComponent(id)}`,{method:'DELETE',headers:headers()});
+  if(!res.ok){alert(`削除に失敗しました (${res.status})`);return}
+  questions=await loadQuestionsFromSupabase();renderSummary();renderList();
+}
 
-$('#login-form').addEventListener('submit',e=>{
-  e.preventDefault();
-  if($('#admin-password').value===PASSWORD){
-    setLoggedIn(true);
-    $('#login-error').hidden=true;
-    showAdmin();
-  }else{
-    $('#login-error').hidden=false;
-    $('#admin-password').select();
-  }
-});
-$('#logout-btn').addEventListener('click',(e)=>{
-  e.preventDefault();
-  setLoggedIn(false);
-  showLogin();
-});
-$$('.tab').forEach(tab=>tab.addEventListener('click',(e)=>{
-  e.preventDefault();
-  activeTab=tab.dataset.tab;
-  $$('.tab').forEach(t=>t.classList.remove('active'));
-  tab.classList.add('active');
-  renderList();
-}));
+$('#login-form').addEventListener('submit',e=>{e.preventDefault();if($('#admin-password').value===PASSWORD){setLoggedIn(true);$('#login-error').hidden=true;showAdmin()}else{$('#login-error').hidden=false;$('#admin-password').select()}});
+$('#logout-btn').addEventListener('click',e=>{e.preventDefault();setLoggedIn(false);showLogin()});
+$$('.tab').forEach(tab=>tab.addEventListener('click',e=>{e.preventDefault();activeTab=tab.dataset.tab;$$('.tab').forEach(t=>t.classList.remove('active'));tab.classList.add('active');renderList()}));
 $('#search-input').addEventListener('input',renderList);
 $('#year-filter').addEventListener('change',renderList);
+$('#add-question-btn').addEventListener('click',()=>openEditor(null));
+$('#cancel-editor-btn').addEventListener('click',closeEditor);
+$('#question-form').addEventListener('submit',saveQuestion);
 
-load().then(()=>{
-  if(isLoggedIn())showAdmin();else showLogin();
-}).catch(e=>{
+load().then(()=>{if(isLoggedIn())showAdmin();else showLogin()}).catch(e=>{
   console.error(e);
   $('#login-error').hidden=false;
-  $('#login-error').textContent='データベースを読み込めませんでした。';
+  $('#login-error').textContent='Supabaseから通常問題を読み込めませんでした。SQL・API設定を確認してください。';
 });
 })();

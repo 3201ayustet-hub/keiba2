@@ -1,78 +1,40 @@
-# KEIBA QUIZ — GitHub Pages Build
+# KEIBA QUIZ — GitHub Pages + Supabase
 
-## 今回の実装
-- 通常問題：50問
-- FINAL DB：205レース
-- 1プレイ：通常5問 → FINAL 1問
-- 通常問題は毎回5問をランダム抽出、同一プレイ内重複なし
-- 選択肢も毎問シャッフル
-- 正解○ / 不正解×
-- 不正解時に正解を表示しない
-- 回答後のみNEXT
-- 正解でFINALパネルを獲得
-- 獲得パネルは通常問題中ずっと画面上部にストック表示
-- 獲得したパネルはFINALへ引き継ぎ
-- FINALはヒント操作なし
-- FINALの表示は6行：VENUE / 2ND / 3RD / 4TH / 5TH / TIME
-- 開示順：TIME → 4TH + 5TH → 3RD → 2ND → VENUE
-- FINALのレース名はゲーム画面に表示しない
-- FINALは1着馬のみ回答
-- FINAL正解だけが最終結果を決定
+## 今回の変更
+- 通常問題の読み込み先を Supabase `quiz_questions` に変更
+- Supabaseが利用できない場合は既存の `questions.json` に自動フォールバック
+- FINAL問題は既存の `final_races.json` を使用
+- 管理者ページから通常問題の追加・編集・削除に対応
+- 管理者ページのパスワードは従来どおり `4649`
+- FINAL問題は管理者ページから閲覧のみ
+- 既存のFINAL演出・5問正解時の1ST頭文字表示などは維持
 
-## 管理者ページ
-- スタート画面に「管理者ページ」
-- `admin.html` にアクセス
-- パスワード：`4649`
-- 全通常問題を一覧確認
-- 全FINAL DBを一覧確認
-- 検索・年度絞り込み
-- FINAL DBのファクトチェック状態も表示
+## Supabase
+Supabase側で `quiz_questions` テーブルと公開CRUDポリシーを作成済みであることが前提です。
 
-## 重要なセキュリティ注意
-GitHub Pagesは静的サイトなので、この管理者ページのパスワードは**UI上のアクセスゲート**です。
-本当のサーバー認証ではありません。JSON自体も公開リポジトリから取得できます。
-機密情報を守る用途では利用しないでください。
+ブラウザ用設定は `supabase-config.js` にあります。
 
-## データ
-FINAL DBは現在の確定済み205レースを反映。
-2〜5着・タイムの全件個別照合が未完のレコードは、管理者ページで `pending_individual_jra_check` と表示します。
-未確認情報を新たに推測して補完していません。
+- URL: `https://uczkqklqdbzkxerboatx.supabase.co/rest/v1`
+- Table: `quiz_questions`
 
+## quiz_questions の項目
+- `id`
+- `question`
+- `option1`
+- `option2`
+- `option3`
+- `option4`
+- `correct_option`（1〜4）
+- `explanation`
+- `active`
+- `created_at`
+- `updated_at`
 
-## v3 回帰確認
-今回の修正版では、以前実装されていた機能を維持した上でFINAL回答後の遷移を専用結果画面に分離しました。
+## GitHub Pages
+このZIPのファイルをGitHub Pagesの公開ブランチへ配置してください。
+`index.html` がゲーム、`admin.html` が管理者ページです。
 
-- FINAL回答入力 → ANSWER
-- 正解 → 専用の「FINAL RESULT」画面 → 大きな○ + CONGRATULATIONS
-- 不正解 → 専用の「FINAL RESULT」画面 → 大きな× + 残念表示
-- 不正解時に正解馬名を表示しない
-- PLAY AGAINでスタート画面へ戻れる
-- FINAL画面にはOPEN / NEXT HINT等のヒント操作なし
-- 管理者ページから「FINAL問題（全件）」タブへアクセス可能
-- 管理者ページは通常問題 / FINAL問題を切り替えて一覧確認可能
-- 管理者パスワードは4649
-- 通常問題は50問
-- 現在のFINAL DBは205レース
-- 既存JSONデータは今回のUI修正で削除・再生成していない
+## 注意
+この構成ではSupabaseのPublishable Keyをブラウザに配置します。Publishable Key自体は公開前提ですが、現在のSQLポリシーは匿名ユーザーの追加・編集・削除を許可しています。URLを知っている人全員で共同編集する今回の仕様に合わせたものです。
 
-### データ件数について
-今回の元実装DBに入っていたFINALレコード数は **205件** です。
-「206件」が要件の場合、DBに206件目の検証済みレコードを追加できるまでは、件数を水増しせず「205件」として扱います。
-
-
-## v4 修正版
-- FINAL回答後の結果画面遷移を明示的なDOM状態切替に変更
-- PLAY AGAIN時にゲーム状態をリセット
-- FINAL ANSWERボタンのイベント処理を明示化
-- 管理者ページの通常問題 / FINAL問題切替を `display` による明示制御へ変更
-- FINALタブ選択時はFINAL DBを明示的に表示
-- タブをbutton type=buttonとしてフォーム送信の影響を排除
-- 管理者ページのFINAL DB読み込み元は `final_races.json`
-
-## v5 修正
-- 通常問題中の「4着・5着」は獲得パネルとして1枚に統合
-- 獲得ストック表示も「4TH + 5TH」の1パネル
-- FINAL着順掲示板では4着と5着を従来どおり別行で表示
-- FINAL不正解時のみ「何年・何レース・正解馬」を結果画面に表示
-- FINAL正解時は従来どおりCongratulations表示
-- FINAL結果画面をscreen管理対象に含め、確実に表示可能に修正
+本番運用で荒らし対策が必要になった場合は、Supabase Auth + RLSによる編集者認証へ移行してください。
