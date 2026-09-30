@@ -1,7 +1,6 @@
 (()=>{
 const $=s=>document.querySelector(s);
 const $$=s=>document.querySelectorAll(s);
-const PASSWORD='4649';
 const cfg=()=>window.KEIBA_QUIZ_SUPABASE;
 let questions=[], finals=[], activeTab='normal', editingId=null;
 
@@ -17,19 +16,12 @@ function normalizeQuestionRow(r){
     category:r.category||'RACE QUIZ'
   };
 }
-function isLoggedIn(){return sessionStorage.getItem('keiba_admin_auth')==='1'}
-function setLoggedIn(v){if(v)sessionStorage.setItem('keiba_admin_auth','1');else sessionStorage.removeItem('keiba_admin_auth')}
 
 function showAdmin(){
-  $('#login-view').classList.remove('active');
+  $('#login-view').hidden=true;
   $('#admin-view').classList.add('active');
   renderSummary();
   renderList();
-}
-function showLogin(){
-  $('#admin-view').classList.remove('active');
-  $('#login-view').classList.add('active');
-  $('#admin-password').value='';
 }
 function renderSummary(){
   $('#db-summary').innerHTML=`
@@ -122,24 +114,66 @@ async function loadLocalSeedQuestions(){
   return (Array.isArray(data)?data:(data.questions||[])).filter(q=>Array.isArray(q.choices)&&q.choices.length>=4&&q.question&&q.answer);
 }
 async function seedDefaultQuestions(){
-  if(questions.length){alert('通常問題が既に登録されています。初期100問の登録は、問題が0件のときのみ実行できます。');return}
+  if(questions.length){
+    alert('通常問題が既に登録されています。初期100問の登録は、問題が0件のときのみ実行できます。');
+    return;
+  }
   if(!confirm('元の100問をSupabaseへ登録します。よろしいですか？'))return;
-  const seed=await loadLocalSeedQuestions();
-  if(seed.length!==100){alert(`初期問題が100問ではありません（${seed.length}問）。処理を中止しました。`);return}
-  const payload=seed.map(q=>{
-    const choices=q.choices.slice(0,4);
-    const correct=choices.findIndex(v=>String(v).trim()===String(q.answer).trim())+1;
-    return {question:q.question,option1:choices[0],option2:choices[1],option3:choices[2],option4:choices[3],correct_option:correct,explanation:q.explanation||'',active:true};
-  });
-  if(payload.some(x=>x.correct_option<1)){alert('正解選択肢を特定できない問題があるため、中止しました。');return}
-  const c=cfg();
-  const res=await fetch(`${c.url}/quiz_questions`,{method:'POST',headers:{...headers(),Prefer:'return=minimal'},body:JSON.stringify(payload)});
-  if(!res.ok){alert(`初期100問の登録に失敗しました (${res.status})`);return}
-  questions=await loadQuestionsFromSupabase();
-  renderSummary();renderList();
-  updateSeedButton();
-  alert('初期100問を登録しました。以後は管理者ページから編集・削除できます。');
+  try{
+    const seed=await loadLocalSeedQuestions();
+    if(seed.length!==100){
+      alert(`初期問題が100問ではありません（${seed.length}問）。処理を中止しました。`);
+      return;
+    }
+    const payload=seed.map(q=>{
+      const choices=q.choices.slice(0,4);
+      const correct=choices.findIndex(v=>String(v).trim()===String(q.answer).trim())+1;
+      return {
+        question:q.question,
+        option1:choices[0],
+        option2:choices[1],
+        option3:choices[2],
+        option4:choices[3],
+        correct_option:correct,
+        explanation:q.explanation||'',
+        active:true
+      };
+    });
+    if(payload.some(x=>x.correct_option<1)){
+      alert('正解選択肢を特定できない問題があるため、中止しました。');
+      return;
+    }
+    const c=cfg();
+    const res=await fetch(`${c.url}/quiz_questions`,{
+      method:'POST',
+      headers:{...headers(),Prefer:'return=representation'},
+      body:JSON.stringify(payload),
+      cache:'no-store'
+    });
+    const body=await res.text();
+    if(!res.ok){
+      let detail=body;
+      try{detail=JSON.parse(body)?.message||JSON.parse(body)?.hint||body}catch{}
+      throw new Error(`Supabase登録エラー (${res.status})\n${detail}`);
+    }
+    const inserted=body?JSON.parse(body):[];
+    if(Array.isArray(inserted) && inserted.length!==100){
+      throw new Error(`登録件数が100件ではありません（${inserted.length}件）。`);
+    }
+    questions=await loadQuestionsFromSupabase();
+    if(questions.length!==100){
+      throw new Error(`登録後の取得件数が100件ではありません（${questions.length}件）。`);
+    }
+    renderSummary();
+    renderList();
+    updateSeedButton();
+    alert('初期100問を登録しました。以後は管理者ページから編集・削除できます。');
+  }catch(err){
+    console.error(err);
+    alert(`初期100問の登録に失敗しました。\n\n${err.message||err}`);
+  }
 }
+
 function updateSeedButton(){
   const b=$('#seed-questions-btn');
   if(!b)return;
@@ -182,8 +216,6 @@ async function deleteQuestion(id){
   questions=await loadQuestionsFromSupabase();renderSummary();renderList();
 }
 
-$('#login-form').addEventListener('submit',e=>{e.preventDefault();if($('#admin-password').value===PASSWORD){setLoggedIn(true);$('#login-error').hidden=true;showAdmin()}else{$('#login-error').hidden=false;$('#admin-password').select()}});
-$('#logout-btn').addEventListener('click',e=>{e.preventDefault();setLoggedIn(false);showLogin()});
 $$('.tab').forEach(tab=>tab.addEventListener('click',e=>{e.preventDefault();activeTab=tab.dataset.tab;$$('.tab').forEach(t=>t.classList.remove('active'));tab.classList.add('active');renderList()}));
 $('#search-input').addEventListener('input',renderList);
 $('#year-filter').addEventListener('change',renderList);
@@ -192,9 +224,8 @@ $('#add-question-btn').addEventListener('click',()=>openEditor(null));
 $('#cancel-editor-btn').addEventListener('click',closeEditor);
 $('#question-form').addEventListener('submit',saveQuestion);
 
-load().then(()=>{if(isLoggedIn())showAdmin();else showLogin()}).catch(e=>{
+load().then(()=>{showAdmin()}).catch(e=>{
   console.error(e);
-  $('#login-error').hidden=false;
-  $('#login-error').textContent='Supabaseから通常問題を読み込めませんでした。SQL・API設定を確認してください。';
+  alert('Supabaseから通常問題を読み込めませんでした。SQL・API設定を確認してください。');
 });
 })();

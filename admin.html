@@ -10,27 +10,15 @@
 </head>
 <body>
 <main class="admin-app">
-<section id="login-view" class="admin-screen active">
-  <div class="admin-brand">KEIBA QUIZ</div>
-  <div class="admin-kicker">ADMINISTRATOR</div>
-  <h1>管理者ページ</h1>
-  <p class="admin-note">パスワードを入力してください。</p>
-  <form id="login-form" class="login-form">
-    <input id="admin-password" type="password" inputmode="numeric" autocomplete="off"
-      maxlength="4" placeholder="PASSWORD" aria-label="管理者パスワード">
-    <button class="admin-primary" type="submit">ENTER</button>
-  </form>
-  <div id="login-error" class="login-error" hidden>パスワードが違います。</div>
-  <a href="index.html" class="back-link">← GAME</a>
-</section>
+<section id="login-view" class="admin-screen" hidden></section>
 
-<section id="admin-view" class="admin-screen">
+<section id="admin-view" class="admin-screen active">
   <header class="admin-header">
     <div>
       <div class="admin-kicker">ADMINISTRATOR</div>
       <h1>DATABASE</h1>
     </div>
-    <button type="button" id="logout-btn" class="small-btn">LOGOUT</button>
+    <a href="index.html" class="small-btn">GAME</a>
   </header>
 
   <div id="db-summary" class="db-summary"></div>
