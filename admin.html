@@ -10,8 +10,6 @@
 </head>
 <body>
 <main class="admin-app">
-<section id="login-view" class="admin-screen" hidden></section>
-
 <section id="admin-view" class="admin-screen active">
   <header class="admin-header">
     <div>
@@ -29,29 +27,38 @@
   </nav>
 
   <section id="editor" class="editor" hidden>
-  <div class="editor-head">
-    <div><div class="admin-kicker">NORMAL QUESTION</div><h2 id="editor-title">通常問題を追加</h2><div id="question-id" class="card-id">NEW</div></div>
-    <button type="button" id="cancel-editor-btn" class="small-btn">CANCEL</button>
-  </div>
-  <form id="question-form" class="question-form">
-    <label>問題文<textarea id="q-question" required></textarea></label>
-    <div class="editor-options">
-      <label>選択肢1<input id="q-option1" required></label>
-      <label>選択肢2<input id="q-option2" required></label>
-      <label>選択肢3<input id="q-option3" required></label>
-      <label>選択肢4<input id="q-option4" required></label>
+    <div class="editor-head">
+      <div>
+        <div class="admin-kicker">NORMAL QUESTION</div>
+        <h2 id="editor-title">通常問題を追加</h2>
+        <div id="question-id" class="card-id">NEW</div>
+      </div>
+      <button type="button" id="cancel-editor-btn" class="small-btn">CANCEL</button>
     </div>
-    <label>正解選択肢<select id="q-correct"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></label>
-    <label>解説<textarea id="q-explanation" required></textarea></label>
-    <button class="admin-primary" type="submit">SAVE</button>
-  </form>
-</section>
+    <form id="question-form" class="question-form">
+      <label>問題文<textarea id="q-question" required></textarea></label>
+      <div class="editor-options">
+        <label>選択肢1<input id="q-option1" required></label>
+        <label>選択肢2<input id="q-option2" required></label>
+        <label>選択肢3<input id="q-option3" required></label>
+        <label>選択肢4<input id="q-option4" required></label>
+      </div>
+      <label>正解選択肢
+        <select id="q-correct">
+          <option value="1">1</option><option value="2">2</option>
+          <option value="3">3</option><option value="4">4</option>
+        </select>
+      </label>
+      <label>解説<textarea id="q-explanation" required></textarea></label>
+      <button class="admin-primary" type="submit">SAVE</button>
+    </form>
+  </section>
 
-<div class="toolbar">
-    <input id="search-input" type="search" placeholder="検索：問題文・馬名・レース名など"><button type="button" id="seed-questions-btn" class="small-btn" hidden>初期100問を登録</button><button type="button" id="add-question-btn" class="admin-primary toolbar-add">＋通常問題を追加</button>
-    <select id="year-filter" hidden>
-      <option value="">全年度</option>
-    </select>
+  <div class="toolbar">
+    <input id="search-input" type="search" placeholder="検索：問題文・馬名・レース名など">
+    <button type="button" id="seed-questions-btn" class="small-btn" hidden>初期100問を登録</button>
+    <button type="button" id="add-question-btn" class="admin-primary toolbar-add">＋通常問題を追加</button>
+    <select id="year-filter" hidden><option value="">全年度</option></select>
   </div>
 
   <div id="normal-list" class="data-list"></div>
@@ -59,8 +66,5 @@
 </section>
 </main>
 <script src="admin.js"></script>
-<button id="seed-button" type="button">初期100問を登録</button>
-<button id="add-question" type="button">通常問題を追加</button>
-<div id="question-list"></div>
 </body>
 </html>
