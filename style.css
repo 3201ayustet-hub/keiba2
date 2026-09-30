@@ -127,6 +127,13 @@ button{cursor:pointer}
   flex:1;text-align:right;font:900 18px "Noto Serif JP",serif;
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis
 }
+.venue-row .board-value{
+  display:flex;align-items:center;justify-content:flex-end;gap:14px;
+}
+.winner-initial{
+  font:700 10px Oswald,sans-serif;letter-spacing:.08em;color:var(--red);
+  white-space:nowrap
+}
 .board-row.closed .board-value{
   color:transparent;background:repeating-linear-gradient(135deg,var(--navy) 0 9px,var(--ink) 9px 18px);
   height:25px

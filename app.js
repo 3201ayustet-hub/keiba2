@@ -30,20 +30,16 @@ function valueText(v){return Array.isArray(v)?v.join(' ／ '):String(v??'—');}
 
 const panelMap=[
   {key:'time',label:'TIME',name:'TIME PANEL'},
-  {key:'fourth',label:'4TH',name:'4TH PANEL'},
-  {key:'fifth',label:'5TH',name:'5TH PANEL'},
+  {key:'fourth_fifth',label:'4TH + 5TH',name:'4TH + 5TH PANEL'},
   {key:'third',label:'3RD',name:'3RD PANEL'},
   {key:'second',label:'2ND',name:'2ND PANEL'},
   {key:'venue',label:'VENUE',name:'VENUE PANEL'}
 ];
 
 function earnedPanels(){
-  return panelMap.filter((_,i)=>{
-    if(i===0)return score>=1;
-    if(i===1||i===2)return score>=2;
-    return score>=i+1;
-  });
+  return panelMap.filter((_,i)=>score>=i+1);
 }
+
 function updateStock(){
   $$('.stock-chip').forEach(el=>{
     const key=el.dataset.panel;
@@ -109,7 +105,7 @@ function answerQuestion(choice,btn){
   if(correct){
     const gained=earnedPanels().filter(p=>{
       if(score===1)return p.key==='time';
-      if(score===2)return p.key==='fourth'||p.key==='fifth';
+      if(score===2)return p.key==='fourth_fifth';
       if(score===3)return p.key==='third';
       if(score===4)return p.key==='second';
       if(score===5)return p.key==='venue';
@@ -136,18 +132,23 @@ function renderFinal(){
   currentFinal=valid[Math.floor(Math.random()*valid.length)];
   const openCount=score;
 
+  const winnerInitial=Array.from(String(currentFinal.winner??'').trim())[0]||'—';
+  const venueValue=openCount>=5
+    ? `<span class="venue-name">${esc(valueText(currentFinal.venue))}</span><span class="winner-initial">1ST INITIAL : ${esc(winnerInitial)}</span>`
+    : esc(valueText(currentFinal.venue));
   const rows=[
-    ['VENUE',currentFinal.venue,5],
-    ['2ND',currentFinal.second,4],
-    ['3RD',currentFinal.third,3],
-    ['4TH',currentFinal.fourth,2],
-    ['5TH',currentFinal.fifth,2],
-    ['TIME',currentFinal.time,1]
+    ['VENUE',venueValue,5,true],
+    ['1ST','',6,false],
+    ['2ND',currentFinal.second,4,false],
+    ['3RD',currentFinal.third,3,false],
+    ['4TH',currentFinal.fourth,2,false],
+    ['5TH',currentFinal.fifth,2,false],
+    ['TIME',currentFinal.time,1,false]
   ];
-  $('#final-board').innerHTML=rows.map(([label,value,need])=>
-    `<div class="board-row ${openCount>=need?'':'closed'}">
+  $('#final-board').innerHTML=rows.map(([label,value,need,isVenue])=>
+    `<div class="board-row ${openCount>=need?'':'closed'} ${isVenue?'venue-row':''}">
       <div class="board-label">${label}</div>
-      <div class="board-value">${esc(valueText(value))}</div>
+      <div class="board-value">${value}</div>
     </div>`
   ).join('');
 
@@ -172,14 +173,12 @@ function submitFinal(){
   mark.textContent=ok?'○':'×';
   mark.className='final-result-mark '+(ok?'ok':'ng');
   title.textContent=ok?'CONGRATULATIONS':'残念！';
-  const raceInfo=`${currentFinal.year}年 ${currentFinal.race}`;
-  const answerInfo=`正解は「${currentFinal.winner}」`;
+  copy.textContent=`${currentFinal.year}年 ${currentFinal.race} — 正解は「${currentFinal.winner}」`;
 
-  copy.textContent=ok
-    ? `${raceInfo} — ${answerInfo}`
-    : `${raceInfo} — ${answerInfo}`;
-
-  show('final-result-screen');
+  // Explicitly leave FINAL before showing the result screen.
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  const resultScreen = document.getElementById('final-result-screen');
+  if (resultScreen) resultScreen.classList.add('active');
 }
 async function loadData(){
   const [qr,fr]=await Promise.all([
@@ -191,9 +190,7 @@ async function loadData(){
   finals=await fr.json();
   questions=Array.isArray(questions)?questions:(questions.questions||[]);
   finals=Array.isArray(finals)?finals:(finals.races||finals.finalRaces||[]);
-  questions=questions
-    .filter(validateQuestion)
-    .map(q=>({...q,category:q.category||'RACE QUIZ'}));
+  questions=questions.filter(validateQuestion).map(q=>({...q,category:q.category||'RACE QUIZ'}));
   finals=finals.filter(validateFinal);
   if(questions.length<5)throw new Error('通常問題が5問未満です。');
   if(!finals.length)throw new Error('FINAL問題がありません。');
@@ -209,9 +206,16 @@ $('#final-start-btn').addEventListener('click',()=>{
   try{renderFinal();show('final-screen')}
   catch(e){alert(e.message)}
 });
-$('#final-submit').addEventListener('click',submitFinal);
+$('#final-submit').addEventListener('click',(e)=>{
+  e.preventDefault();
+  submitFinal();
+});
 $('#final-answer').addEventListener('keydown',e=>{if(e.key==='Enter')submitFinal()});
-$('#restart-btn').addEventListener('click',()=>show('title-screen'));
+$('#restart-btn').addEventListener('click',()=>{
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  $('#title-screen').classList.add('active');
+  currentFinal=null;
+});
 
 loadData().catch(e=>{
   console.error(e);
