@@ -8,6 +8,15 @@ let questions=[], finals=[], activeTab='normal', editingId=null;
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const valueText=v=>Array.isArray(v)?v.join(' ／ '):String(v??'—');
 const headers=()=>({apikey:cfg().key,Authorization:`Bearer ${cfg().key}`,'Content-Type':'application/json'});
+function normalizeQuestionRow(r){
+  const choices=[r.option1,r.option2,r.option3,r.option4];
+  return {
+    ...r,
+    choices,
+    answer:choices[(Number(r.correct_option)||1)-1]||'',
+    category:r.category||'RACE QUIZ'
+  };
+}
 function isLoggedIn(){return sessionStorage.getItem('keiba_admin_auth')==='1'}
 function setLoggedIn(v){if(v)sessionStorage.setItem('keiba_admin_auth','1');else sessionStorage.removeItem('keiba_admin_auth')}
 
@@ -28,6 +37,7 @@ function renderSummary(){
     <div class="summary-card"><b>${finals.length}</b><span>FINAL DB</span></div>
     <div class="summary-card"><b>${questions.filter(q=>q.active!==false).length}</b><span>出題中</span></div>
   `;
+  updateSeedButton();
 }
 function normalCard(q){
   const choices=(q.choices||[]).map((c,i)=>{
@@ -95,7 +105,7 @@ async function loadQuestionsFromSupabase(){
   if(!c?.url||!c?.key)throw new Error('Supabase設定がありません。');
   const res=await fetch(`${c.url}/quiz_questions?select=*&order=id.asc`,{headers:headers(),cache:'no-store'});
   if(!res.ok)throw new Error(`通常問題の取得に失敗しました (${res.status})`);
-  return res.json();
+  return (await res.json()).map(normalizeQuestionRow);
 }
 async function load(){
   const f=await fetch('final_races.json',{cache:'no-store'});
@@ -105,6 +115,37 @@ async function load(){
   const years=[...new Set(finals.map(r=>r.year).filter(Boolean))].sort((a,b)=>b-a);
   $('#year-filter').innerHTML='<option value="">全年度</option>'+years.map(y=>`<option value="${esc(y)}">${esc(y)}年</option>`).join('');
 }
+async function loadLocalSeedQuestions(){
+  const res=await fetch('questions.json',{cache:'no-store'});
+  if(!res.ok)throw new Error('questions.json の読み込みに失敗しました。');
+  const data=await res.json();
+  return (Array.isArray(data)?data:(data.questions||[])).filter(q=>Array.isArray(q.choices)&&q.choices.length>=4&&q.question&&q.answer);
+}
+async function seedDefaultQuestions(){
+  if(questions.length){alert('通常問題が既に登録されています。初期100問の登録は、問題が0件のときのみ実行できます。');return}
+  if(!confirm('元の100問をSupabaseへ登録します。よろしいですか？'))return;
+  const seed=await loadLocalSeedQuestions();
+  if(seed.length!==100){alert(`初期問題が100問ではありません（${seed.length}問）。処理を中止しました。`);return}
+  const payload=seed.map(q=>{
+    const choices=q.choices.slice(0,4);
+    const correct=choices.findIndex(v=>String(v).trim()===String(q.answer).trim())+1;
+    return {question:q.question,option1:choices[0],option2:choices[1],option3:choices[2],option4:choices[3],correct_option:correct,explanation:q.explanation||'',active:true};
+  });
+  if(payload.some(x=>x.correct_option<1)){alert('正解選択肢を特定できない問題があるため、中止しました。');return}
+  const c=cfg();
+  const res=await fetch(`${c.url}/quiz_questions`,{method:'POST',headers:{...headers(),Prefer:'return=minimal'},body:JSON.stringify(payload)});
+  if(!res.ok){alert(`初期100問の登録に失敗しました (${res.status})`);return}
+  questions=await loadQuestionsFromSupabase();
+  renderSummary();renderList();
+  updateSeedButton();
+  alert('初期100問を登録しました。以後は管理者ページから編集・削除できます。');
+}
+function updateSeedButton(){
+  const b=$('#seed-questions-btn');
+  if(!b)return;
+  b.hidden=questions.length!==0;
+}
+
 function openEditor(id){
   editingId=id?String(id):null;
   const q=editingId?questions.find(x=>String(x.id)===editingId):null;
@@ -146,6 +187,7 @@ $('#logout-btn').addEventListener('click',e=>{e.preventDefault();setLoggedIn(fal
 $$('.tab').forEach(tab=>tab.addEventListener('click',e=>{e.preventDefault();activeTab=tab.dataset.tab;$$('.tab').forEach(t=>t.classList.remove('active'));tab.classList.add('active');renderList()}));
 $('#search-input').addEventListener('input',renderList);
 $('#year-filter').addEventListener('change',renderList);
+$('#seed-questions-btn').addEventListener('click',seedDefaultQuestions);
 $('#add-question-btn').addEventListener('click',()=>openEditor(null));
 $('#cancel-editor-btn').addEventListener('click',closeEditor);
 $('#question-form').addEventListener('submit',saveQuestion);
