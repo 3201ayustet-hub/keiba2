@@ -130,10 +130,6 @@ button{cursor:pointer}
 .venue-row .board-value{
   display:flex;align-items:center;justify-content:flex-end;gap:14px;
 }
-.winner-initial{
-  font:700 10px Oswald,sans-serif;letter-spacing:.08em;color:var(--red);
-  white-space:nowrap
-}
 .board-row.closed .board-value{
   color:transparent;background:repeating-linear-gradient(135deg,var(--navy) 0 9px,var(--ink) 9px 18px);
   height:25px
@@ -194,3 +190,17 @@ button{cursor:pointer}
 }
 
 .stock-chip-wide{grid-column:span 2}
+
+/* 5問全問正解時だけ、1ST欄に1着馬の頭文字を1文字だけ表示 */
+.board-row.first-hint .board-value{
+  color:var(--navy);
+  background:none;
+  height:auto;
+  font-size:24px;
+  letter-spacing:.04em;
+}
+.board-row.first-hint.closed .board-value{
+  color:transparent;
+  background:repeating-linear-gradient(135deg,var(--navy) 0 9px,var(--ink) 9px 18px);
+  height:25px;
+}

@@ -133,20 +133,18 @@ function renderFinal(){
   const openCount=score;
 
   const winnerInitial=Array.from(String(currentFinal.winner??'').trim())[0]||'—';
-  const venueValue=openCount>=5
-    ? `<span class="venue-name">${esc(valueText(currentFinal.venue))}</span><span class="winner-initial">1ST INITIAL : ${esc(winnerInitial)}</span>`
-    : esc(valueText(currentFinal.venue));
+  const venueValue=esc(valueText(currentFinal.venue));
   const rows=[
-    ['VENUE',venueValue,5,true],
-    ['1ST','',6,false],
-    ['2ND',currentFinal.second,4,false],
-    ['3RD',currentFinal.third,3,false],
-    ['4TH',currentFinal.fourth,2,false],
-    ['5TH',currentFinal.fifth,2,false],
-    ['TIME',currentFinal.time,1,false]
+    ['VENUE',venueValue,5,'venue-row',''],
+    ['1ST',openCount>=5?esc(winnerInitial):'',6,'','first-hint'],
+    ['2ND',currentFinal.second,4,'',''],
+    ['3RD',currentFinal.third,3,'',''],
+    ['4TH',currentFinal.fourth,2,'',''],
+    ['5TH',currentFinal.fifth,2,'',''],
+    ['TIME',currentFinal.time,1,'','']
   ];
-  $('#final-board').innerHTML=rows.map(([label,value,need,isVenue])=>
-    `<div class="board-row ${openCount>=need?'':'closed'} ${isVenue?'venue-row':''}">
+  $('#final-board').innerHTML=rows.map(([label,value,need,rowClass,hintClass])=>
+    `<div class="board-row ${openCount>=need?'':'closed'} ${rowClass} ${hintClass}">
       <div class="board-label">${label}</div>
       <div class="board-value">${value}</div>
     </div>`
